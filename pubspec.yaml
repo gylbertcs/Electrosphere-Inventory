@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   shared_preferences: ^2.0.15
+  d_view: ^0.0.2
+  http: ^1.2.2
+  d_method: ^0.2.0
+  d_info: ^0.0.7
 
 dev_dependencies:
   flutter_test:
