@@ -10,5 +10,6 @@ class Api {
   static const delete = 'update.php';
   static const gets = 'get.php';
   static const search = 'search.php';
+  static const count = 'count.php';
 
 }

@@ -5,6 +5,7 @@ class CUser extends GetxController {
   final Rx<User> _data = User().obs;
   User get data => _data.value;
   set data(User newData) {
-    data = newData;
+    _data.value = newData;
   }
 }
+

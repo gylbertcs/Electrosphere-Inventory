@@ -1,8 +1,12 @@
+import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
+import 'package:electrosphereinventory/config/session.dart';
+import 'package:electrosphereinventory/presentation/page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
 import '../controller/c_user.dart';
+import 'package:electrosphereinventory/presentation/controller/c_dashboard.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -13,6 +17,19 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   final cUser = Get.put(CUser());
+  final cDashboard = Get.put(CDashboard());
+
+logout() async {
+  bool yes = await DInfo.dialogConfirmation(
+    context,
+    'Logout',
+    'Are you sure to logout?',
+  )?? false;
+  if (yes) {
+    Session.clearUser();
+    Get.off(() => const LoginPage());
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +39,7 @@ class _DashboardPageState extends State<DashboardPage> {
         title: const Text('Dashboard'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => logout(),
             icon: const Icon(Icons.logout),
           ),
         ],
@@ -36,6 +53,7 @@ class _DashboardPageState extends State<DashboardPage> {
               padding: const EdgeInsets.all(16),
               child: DView.textTitle('Menu'),
             ),
+            
             GridView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -84,12 +102,14 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           Row(
             children: [
-              Text(
-                '100',
+              Obx(() {
+                return Text(
+                cDashboard.product.toString(),
                 style: textTheme.headlineMedium!.copyWith(
-                  color: Colors.white,
+                color: Colors.white,
                 ),
-              ),
+                );
+              }),
               DView.width(8),
               const Text(
                 'Item',
@@ -122,12 +142,14 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           Row(
             children: [
-              Text(
-                '100',
+              Obx((){
+                return Text(
+                cDashboard.history.toString(),
                 style: textTheme.headlineMedium!.copyWith(
                   color: Colors.white,
                 ),
-              ),
+                );
+              }),
               DView.width(8),
               const Text(
                 'Act',
@@ -160,12 +182,14 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           Row(
             children: [
-              Text(
-                '100',
+              Obx((){
+                return Text(
+                cDashboard.ins.toString(),
                 style: textTheme.headlineMedium!.copyWith(
                   color: Colors.white,
                 ),
-              ),
+                );
+              }),
               DView.width(8),
               const Text(
                 'Item',
@@ -198,12 +222,14 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           Row(
             children: [
-              Text(
-                '100',
+              Obx((){
+                return Text(
+                cDashboard.outs.toString(),
                 style: textTheme.headlineMedium!.copyWith(
                   color: Colors.white,
                 ),
-              ),
+                );
+              }),
               DView.width(8),
               const Text(
                 'Item',
@@ -234,12 +260,14 @@ class _DashboardPageState extends State<DashboardPage> {
             'Employee',
             style: textTheme.titleLarge,
           ),
-          Text(
-            '100',
-            style: textTheme.headlineMedium!.copyWith(
-              color: Colors.white,
-            ),
-          ),
+          Obx((){
+            return Text(
+              cDashboard.employee.toString(),
+              style: textTheme.headlineMedium!.copyWith(
+                color: Colors.white,
+              ),
+            );
+          }),
         ],
       ),
     );
@@ -247,7 +275,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Container profileCard(TextTheme textTheme) {
     return Container(
-      width: 350,
+      width: 450,
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -257,20 +285,29 @@ class _DashboardPageState extends State<DashboardPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Name',
-            style: textTheme.titleMedium,
+          Obx(() {
+            return Text(
+              cUser.data.name??'',
+              style: textTheme.titleMedium,
+            );
+          }
           ),
           DView.height(4),
-          Text(
-            'Email',
+          Obx(() {
+            return Text(
+            cUser.data.email??'',
             style: textTheme.bodyMedium,
+            );
+          }
+          
           ),
           DView.height(8),
-          Text(
-            '(Admin)',
+          Obx((){
+            return Text(
+            '(${cUser.data.level})',
             style: textTheme.bodySmall,
-          ),
+            );
+          }),
         ],
       ),
     );
