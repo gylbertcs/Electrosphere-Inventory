@@ -68,6 +68,22 @@ TBA
   RAM : 8GB
   
 ## Instalasi dan Setup
+1. Install XAMPP for Windows versi 8.0.30 / PHP 8.0.30 [disini](https://www.apachefriends.org/download.html) <br>
+   Lokasi disk penginstallan XAMPP dibebaskan kepada masing-masing pengguna (baik di C:\ maupun D:\) <br>
+2. Install Visual Studio Code versi Windows [disini](https://code.visualstudio.com/download) <br>
+3. Install Android Studio [disini](https://developer.android.com/studio?hl=id) <br>
+   Pilih untuk platform Windows 64 bit dan paket Android Studio yang memiliki extension .exe
+4. Melakukan clone repository <br>
+   <li>Buka Visual Studio Code</li>
+   <li>Ketik shortcut Ctrl + Shift + G</li>
+   <li>Pilih "Clone Repository"</li>
+   <li>Masukkan link repository ini (https://github.com/gylbertcs/Electrosphere-Inventory.git)</li>
+   <li>Lakukan clone pada folder xampp/htdocs</li>
+   <li>Pindahkan file api_electrosphereinventory ke folder xampp/htdocs, lalu ekstrak pada direktori tersebut</li>
+5. Membuka aplikasi XAMPP lalu aktifkan Apache dan Mysql <br>
+6. Ketik localhost/phpmyadmin/ di browser <br>
+7. Buatlah database baru bernama electrosphere, lalu pilih menu import <br>
+8. Masukkan file .sql yang ada didalam folder project lalu klik "import"
 
 ## Getting Started
 
