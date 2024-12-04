@@ -57,6 +57,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.9"
+  d_input:
+    dependency: "direct main"
+    description:
+      name: d_input
+      sha256: b0b3fb368a2266838460f4b1ac82bfcc28d30cdd74b1b91c24f34e0746482504
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1"
   d_method:
     dependency: "direct main"
     description:
@@ -407,4 +415,4 @@ packages:
     version: "1.1.0"
 sdks:
   dart: ">=3.5.4 <4.0.0"
-  flutter: ">=3.24.0"
+  flutter: ">=3.24.1"
