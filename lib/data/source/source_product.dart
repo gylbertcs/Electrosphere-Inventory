@@ -3,8 +3,6 @@ import 'package:d_info/d_info.dart';
 import 'package:electrosphereinventory/config/api.dart';
 import 'package:electrosphereinventory/config/app_request.dart';
 import 'package:electrosphereinventory/data/model/product.dart';
-import 'package:electrosphereinventory/presentation/page/product.dart/add_update_product_page.dart';
-import 'package:flutter/material.dart';
 
 class SourceProduct {
   static get requestBody => null;
