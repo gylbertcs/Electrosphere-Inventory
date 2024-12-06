@@ -1,6 +1,7 @@
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/session.dart';
+import 'package:electrosphereinventory/presentation/page/history/history_page.dart';
 import 'package:electrosphereinventory/presentation/page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -132,13 +133,18 @@ logout() async {
     );
   }
 
-  Container menuHistory(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
-      ),
+  Widget menuHistory(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: (){
+        Get.to(() => const HistoryPage())
+        ?.then((value) => cDashboard.setHistory());
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,7 +175,9 @@ logout() async {
           ),
         ],
       ),
+      ),
     );
+  
   }
 
   Container menuIn(TextTheme textTheme) {
