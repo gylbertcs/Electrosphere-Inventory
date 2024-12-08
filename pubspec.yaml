@@ -43,6 +43,8 @@ dependencies:
   d_info: ^0.0.7
   d_input: ^0.5.1
   intl: ^0.20.1
+  d_chart: ^2.10.2
+
 
 dev_dependencies:
   flutter_test:
