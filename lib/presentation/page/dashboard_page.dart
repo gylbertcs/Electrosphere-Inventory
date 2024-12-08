@@ -2,6 +2,7 @@ import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/session.dart';
 import 'package:electrosphereinventory/presentation/page/history/history_page.dart';
+import 'package:electrosphereinventory/presentation/page/inout/inout_page.dart';
 import 'package:electrosphereinventory/presentation/page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -180,8 +181,13 @@ logout() async {
   
   }
 
-  Container menuIn(TextTheme textTheme) {
-    return Container(
+  Widget menuIn(TextTheme textTheme) {
+    return GestureDetector(
+    onTap: (){
+      Get.to(()=> const InOutPage(type: 'IN'))
+        ?.then((value) => cDashboard.setIn());
+    },
+    child:Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColor.input,
@@ -217,6 +223,7 @@ logout() async {
           ),
         ],
       ),
+    ),
     );
   }
 

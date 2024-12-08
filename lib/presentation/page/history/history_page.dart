@@ -7,10 +7,10 @@ import 'package:intl/intl.dart';
 // import 'package:get/get_core/src/get_main.dart';
 
 import '../../../data/model/history.dart';
-import '../../controller/c_history.dart';
+//import '../../controller/c_history.dart';
 
 class HistoryPage extends StatefulWidget {
-  const HistoryPage({Key? key}) : super(key: key);
+  const HistoryPage({super.key});
 
   @override
   State<HistoryPage> createState() => _HistoryPageState();
@@ -51,9 +51,9 @@ class _HistoryPageState extends State<HistoryPage> {
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(history.listProduct??"",
-                          style: Theme.of(context). textTheme.bodyLarge,
-                          ),
+                          // Text(history.listProduct??"",
+                          // style: Theme.of(context). textTheme.bodyLarge,
+                          // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
