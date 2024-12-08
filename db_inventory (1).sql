@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Nov 2024 pada 22.28
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.0.30
+-- Generation Time: Dec 08, 2024 at 07:21 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_history`
+-- Table structure for table `tb_history`
 --
 
 CREATE TABLE `tb_history` (
@@ -36,10 +36,22 @@ CREATE TABLE `tb_history` (
   `updated_at` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_history`
+--
+
+INSERT INTO `tb_history` (`id_history`, `list_product`, `total_price`, `type`, `created_at`, `updated_at`) VALUES
+(4, 'sakifa, keisya, aliya', '1890777', 'IN', '2024-12-06', ''),
+(5, 'KOMC', '129000', 'IN', '2024-12-05', ''),
+(6, 'TEKNOLOGI INFORMASI', '2000000', 'IN', '2024-12-04', ''),
+(123, 'C', '12900000', 'IN', '2024-12-02', ''),
+(134, 'B', '8000000', 'IN', '2024-12-03', ''),
+(980, 'D', '70000000', 'IN', '2024-12-01', '');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_product`
+-- Table structure for table `tb_product`
 --
 
 CREATE TABLE `tb_product` (
@@ -52,10 +64,17 @@ CREATE TABLE `tb_product` (
   `updated_at` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_product`
+--
+
+INSERT INTO `tb_product` (`code`, `name`, `stock`, `unit`, `price`, `created_at`, `updated_at`) VALUES
+('JAG6', 'kopiko', 5, 'item', '2000', '2024-12-05 15:57:07+01:00', '2024-12-05 15:57:07+01:00');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -69,7 +88,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `name`, `email`, `password`, `level`, `created_at`, `updated_at`) VALUES
@@ -80,35 +99,35 @@ INSERT INTO `tb_user` (`id_user`, `name`, `email`, `password`, `level`, `created
 --
 
 --
--- Indeks untuk tabel `tb_history`
+-- Indexes for table `tb_history`
 --
 ALTER TABLE `tb_history`
   ADD PRIMARY KEY (`id_history`);
 
 --
--- Indeks untuk tabel `tb_product`
+-- Indexes for table `tb_product`
 --
 ALTER TABLE `tb_product`
   ADD PRIMARY KEY (`code`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_history`
+-- AUTO_INCREMENT for table `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=981;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
