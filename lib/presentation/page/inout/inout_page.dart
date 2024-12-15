@@ -63,7 +63,11 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
         title: Text(widget.type),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(()=>AddInOutPage(type: widget.type))?.then((value)
+                cIN.getAnalysis();
+              );
+            },
             icon: const Icon(Icons.add),
           ),
         ],
