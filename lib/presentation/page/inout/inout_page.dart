@@ -6,6 +6,8 @@ import 'package:electrosphereinventory/presentation/controller/c_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'add_inout_page.dart';
+
 
 class InOutPage extends StatefulWidget {
   const InOutPage({super.key, required this.type});
@@ -64,9 +66,9 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(()=>AddInOutPage(type: widget.type))?.then((value)
-                cIN.getAnalysis();
-              );
+              Get.to(() => AddInOutPage(type: widget.type))?.then((value)
+               { cIN.getAnalysis();
+             } );
             },
             icon: const Icon(Icons.add),
           ),

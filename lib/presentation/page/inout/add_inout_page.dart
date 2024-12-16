@@ -2,9 +2,13 @@ import 'package:electrosphereinventory/presentation/page/inout/pick_product_page
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'inout_page.dart';
+import 'package:d_view/d_view.dart';
+import 'package:get/get.dart';
+
 
 class AddInOutPage extends StatelessWidget {
-  const AddInOutPage({Key? key, required this,type}) : super(key: key);
+  const AddInOutPage({Key? key, required this.type}) : super(key: key);
   final String type;
 
   @override
