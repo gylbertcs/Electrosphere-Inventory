@@ -37,11 +37,20 @@ class _PickProductPageState extends State<PickProductPage> {
     ),
     actions: [
       TextButton(onPressed: () => Get.back(result: false), child: const Text('No'),),
-      TextButton(onPressed: () => Get.back(result: true), child: const Text('Yes'),),
+      TextButton(onPressed: () {
+        if (controllerQuantity.text =='') {
+          DInfo.toastError("Quantity don't empty");
+        } else {
+          Get.back (result: true);
+        }
+      },
+      child: const Text('Yes'),),
     ],
    ),barrierDismissible:false 
    );
-   if(yes) {}
+   if(yes) {
+      int stock = await SourceProduct.stock(product.code!);
+   }
   }
 
   @override

@@ -92,4 +92,20 @@ class SourceProduct {
     return false;
   }
 
+  
+  static Future<int> stock(String code) async {
+    String url = '${Api.product}/stock.php';
+    String? responseBody = await AppRequest.post(url,{
+      'code':code
+    });
+    if (responseBody != null) {
+      Map result = jsonDecode(responseBody);
+      if (result['success']) {
+        return result['data'];
+      }
+      return 0;
+    }
+    return 0;
+  }
+
 }
