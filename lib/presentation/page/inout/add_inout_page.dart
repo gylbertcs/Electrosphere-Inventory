@@ -1,3 +1,4 @@
+import 'package:electrosphereinventory/presentation/page/inout/pick_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -24,7 +25,10 @@ class AddInOutPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: ElevatedButton(onPressed: (){}, child: const Text ('Pick product'),),
+            child: ElevatedButton(onPressed: (){
+                Get.to(()=> PickProductPage(type: type));
+            },
+             child: const Text ('Pick product'),),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
