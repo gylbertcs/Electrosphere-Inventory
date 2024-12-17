@@ -2,7 +2,7 @@ import 'package:d_info/d_info.dart';
 import 'package:d_input/d_input.dart';
 import 'package:electrosphereinventory/data/model/product.dart';
 import 'package:electrosphereinventory/data/source/source_product.dart';
-import 'package:electrosphereinventory/presentation/page/product.dart/add_update_product_page.dart';
+import 'package:electrosphereinventory/presentation/page/product/add_update_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/presentation/controller/c_product.dart';

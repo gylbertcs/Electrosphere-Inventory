@@ -2,7 +2,7 @@ import 'package:d_chart/d_chart.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
 import 'package:electrosphereinventory/data/model/history.dart';
-import 'package:electrosphereinventory/presentation/controller/c_in.dart';
+import 'package:electrosphereinventory/presentation/controller/c_in_out.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +18,12 @@ class InOutPage extends StatefulWidget {
 }
 
 class _InOutPageState extends State<InOutPage> {
-  final cIN = Get.put(CIN());
+  final cInOut = Get.put(CInOut());
+  @override
+  void initState() {
+    cInOut.getAnalysis(widget.type);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +31,18 @@ class _InOutPageState extends State<InOutPage> {
 final List<OrdinalData> ordinalDataList = [
   OrdinalData(
     domain: 'Today',
-    measure: cIN.listTotal.length > 5 ? cIN.listTotal[5] : 0, // Aman dengan panjang cek
-    color: AppColor.historyIn,
+    measure: cInOut.listTotal.length > 5 ? cInOut.listTotal[5] : 0, // Aman dengan panjang cek
+    color: widget.type == 'IN' ? AppColor.historyIn : AppColor.historyOut,
   ),
   OrdinalData(
     domain: 'Yesterday',
-    measure: cIN.listTotal.length > 6 ? cIN.listTotal[6] : 0, // Aman dengan panjang cek
+    measure: cInOut.listTotal.length > 6 ? cInOut.listTotal[6] : 0, // Aman dengan panjang cek
     color: AppColor.primary,
   ),
 ];
 
 // Kondisi tambahan
-if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) {
+if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[5] == 0) {
   ordinalDataList.add(
     OrdinalData(
       domain: 'Nol',
@@ -51,10 +56,10 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
 
     // Data untuk bar chart
     final List<OrdinalData> data = List.generate(
-      cIN.listTotal.length,
+      cInOut.listTotal.length,
       (index) => OrdinalData(
-        domain: cIN.week()[index],
-        measure: cIN.listTotal[index],
+        domain: cInOut.week()[index],
+        measure: cInOut.listTotal[index],
         color: AppColor.historyIn, // Tambahkan warna jika diperlukan
       ),
     );
@@ -68,7 +73,7 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
             onPressed: () {
               Get.to(() => AddInOutPage(type: widget.type))?.then((value)
                {if(value??false){
-                cIN.getAnalysis();
+                cInOut.getAnalysis(widget.type);
                }
                  
              } );
@@ -105,7 +110,7 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
                           builder: (context) {
                             return Center(
                               child: Text(
-                                '${cIN.percentToday.toStringAsFixed((1))}%'
+                                '${cInOut.percentToday.toStringAsFixed((1))}%'
                                 ,
                                 style: Theme.of(context).textTheme.headlineMedium,
                               ),
@@ -125,7 +130,8 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
                             Container(
                               height: 20,
                               width: 20,
-                              color: AppColor.historyIn,
+                            color: widget.type == 'IN' ? AppColor.historyIn : AppColor.historyOut,
+                              
                             ),
                             DView.spaceWidth(8),
                             Text(
@@ -163,7 +169,7 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
                         Builder(
                           builder: (context) {
                             return Text(
-                              '${cIN.percentDifferent}% ${cIN.textDifferent}\nthan yesterday\nor equal to',
+                              '${cInOut.percentDifferent}% ${cInOut.textDifferent}\nthan yesterday\nor equal to',
                               maxLines: 5,
                               style: Theme.of(context)
                                   .textTheme
@@ -179,12 +185,12 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
                         Builder(
                           builder: (context) {
                             return Text(
-                              'Rp ${cIN.different.toStringAsFixed(2)}',
+                              'Rp ${cInOut.different.toStringAsFixed(2)}',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
                                   .copyWith(
-                                    color: AppColor.historyIn,
+                                color: widget.type == 'IN' ? AppColor.historyIn : AppColor.historyOut,
                                     fontWeight: FontWeight.bold,
                                   ),
                             );
@@ -200,7 +206,7 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
           ),
 
           // DChartBar
-          GetBuilder<CIN>(
+          GetBuilder<CInOut>(
             builder: (_) {
               return AspectRatio(
                 aspectRatio: 16 / 9,
@@ -254,7 +260,8 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
                       OrdinalGroup(
                         id: '1',
                         data: data,
-                        color: AppColor.historyIn,
+                        color: widget.type == 'IN' ? AppColor.historyIn : AppColor.historyOut,
+                        
                       ),
                     ],
                   ),
@@ -267,7 +274,7 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                DView.textTitle('History IN', color: Colors.white),
+                DView.textTitle('History ${widget.type}', color: Colors.white),
                 const Spacer(),
                 DView.textAction(
                   () {},
@@ -280,10 +287,10 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
           ),
 
           // History IN
-          GetBuilder<CIN>(builder: (_) {
-            if (cIN.list.isEmpty) return DView.empty();
+          GetBuilder<CInOut>(builder: (_) {
+            if (cInOut.list.isEmpty) return DView.empty();
             return ListView.separated(
-              itemCount: cIN.list.length,
+              itemCount: cInOut.list.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               separatorBuilder: (context, index) => const Divider(
@@ -293,9 +300,11 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
                 endIndent: 16,
               ),
               itemBuilder: (context, index) {
-                History history = cIN.list[index];
+                History history = cInOut.list[index];
                 return ListTile(
-                  leading: const Icon(Icons.south_west, color: Colors.green),
+                  leading: widget.type=='IN' 
+                  ? const Icon(Icons.south_west, color: Colors.green)
+                  : const Icon(Icons.north_east, color: Colors.red),
                   horizontalTitleGap: 0,
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

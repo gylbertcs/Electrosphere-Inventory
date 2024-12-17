@@ -3,7 +3,7 @@ import 'package:electrosphereinventory/data/source/source_inout.dart';
 // import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CIN extends GetxController {
+class CInOut extends GetxController {
         final RxList<History> _list = <History>[].obs;
         List<History> get list => _list.value;
         setList(List newList) {
@@ -41,8 +41,8 @@ class CIN extends GetxController {
           update();
         }
 
-        getAnalysis() async {
-          Map<String, dynamic> analysis = await SourceInOut.analysis('IN');
+        getAnalysis(String type) async {
+          Map<String, dynamic> analysis = await SourceInOut.analysis(type);
           setList(analysis['data']);
           setListTotal(analysis['list_total']);          
         }
@@ -74,12 +74,7 @@ List<String> get days => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         final RxDouble _different = 0.0.obs;
         double get different => _different.value;
 
-        @override
-      void onInit() {
-        getAnalysis();
-        super.onInit();
-      } 
-
+    
       
       }
 

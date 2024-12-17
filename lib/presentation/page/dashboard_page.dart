@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
 import '../controller/c_user.dart';
 import 'package:electrosphereinventory/presentation/controller/c_dashboard.dart';
-import 'package:electrosphereinventory/presentation/page/product.dart/product_page.dart';
+import 'package:electrosphereinventory/presentation/page/product/product_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -227,42 +227,48 @@ logout() async {
     );
   }
 
-  Container menuOut(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'OUT',
-            style: textTheme.titleLarge,
-          ),
-          Row(
-            children: [
-              Obx((){
-                return Text(
-                cDashboard.outs.toString(),
-                style: textTheme.headlineMedium!.copyWith(
-                  color: Colors.white,
+  Widget menuOut(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(()=> const InOutPage(type: 'OUT'))
+            ?.then ((value)=> cDashboard.setOut());
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'OUT',
+              style: textTheme.titleLarge,
+            ),
+            Row(
+              children: [
+                Obx((){
+                  return Text(
+                  cDashboard.outs.toString(),
+                  style: textTheme.headlineMedium!.copyWith(
+                    color: Colors.white,
+                  ),
+                  );
+                }),
+                DView.width(8),
+                const Text(
+                  'Item',
+                  style: TextStyle(
+                    color: Colors.white54,
+                    fontSize: 18,
+                  ),
                 ),
-                );
-              }),
-              DView.width(8),
-              const Text(
-                'Item',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
