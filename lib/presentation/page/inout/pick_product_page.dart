@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/presentation/controller/c_product.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
+
 
 class PickProductPage extends StatefulWidget {
   const PickProductPage({Key? key, required this.type}) : super(key: key);
@@ -50,6 +52,17 @@ class _PickProductPageState extends State<PickProductPage> {
    );
    if(yes) {
       int stock = await SourceProduct.stock(product.code!);
+      if(widget.type=='IN') {
+        Map<String,dynamic> data = {
+          'code':product.code, 
+          'name' : product.name,
+          'price' :product.price,
+          'stock' :stock,
+          'unit' : product.unit,
+          'quantity' : controllerQuantity.text,
+        };
+        Get.back(result : data);
+      } else {}
    }
   }
 

@@ -1,3 +1,4 @@
+import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 import 'package:electrosphereinventory/presentation/page/inout/pick_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -5,12 +6,21 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'inout_page.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
+import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 
 
-class AddInOutPage extends StatelessWidget {
+class AddInOutPage extends StatefulWidget {
   const AddInOutPage({Key? key, required this.type}) : super(key: key);
   final String type;
 
+  @override
+  State<AddInOutPage> createState() => _AddInOutPageState();
+} 
+
+class_AddInOutPageState extends State<AddInOutPage> {
+
+  final CAddInout = Get.put(CAddInOut());
+}
   @override
   Widget build (BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -30,7 +40,11 @@ class AddInOutPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: ElevatedButton(onPressed: (){
-                Get.to(()=> PickProductPage(type: type));
+                Get.to(()=> PickProductPage(type: type)) ?. then((value) {
+                  if(value!=null) {
+                    cAddInOut.add(value);
+                  }
+                });
             },
              child: const Text ('Pick product'),),
           ),
@@ -41,112 +55,118 @@ class AddInOutPage extends StatelessWidget {
           const Divider(
             indent: 16,endIndent: 16
           ),
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-            itemCount: 5,
-            separatorBuilder: (context, index) {
-              return const Divider(
-              height: 1,
-              color: Colors.white60,
-              indent: 16,
-              endIndent: 16,
-              );
-            },
-            itemBuilder: (context, index) {
-              // Product product = cProduct.list[index];
-              return Padding(
-                padding: EdgeInsets.fromLTRB(
-                  16,
-                  index == 0 ? 16 : 8,
-                  0,
-                  index == 9 ? 16 : 0,
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                     SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Text('${index + 1}'),
-                  ),
-                  Expanded(
-                    child: Column(
+            GetBuilder<CAddInout>(
+              builder: (_) {
+                if (cAddInOut.list.isEmpty) return DView.empty();
+                return ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                itemCount: cAddInOut.list.length,
+                separatorBuilder: (context, index) {
+                  return const Divider(
+                  height: 1,
+                  color: Colors.white60,
+                  indent: 16,
+                  endIndent: 16,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  Map product = cAddInOut.list[index];
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      16,
+                      index == 0 ? 16 : 8,
+                      0,
+                      index == 9 ? 16 : 0,
+                    ),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                      Text(
-                        "product.name??''",
-                      style: textTheme.titleMedium!.copyWith(
-                        fontWeight: FontWeight.bold,
+                         SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: Text('${index + 1}'),
                       ),
-                    ),
-                    DView.spaceHeight(4),
-                      Text(
-                        "product.code??''",
-                        style: textTheme.titleSmall!.copyWith(
-                          color: Colors.white70,
-                        ),
-                      ),
-                      DView.spaceHeight(16), 
-                      Text(
-                        "'Rp product.price??'",
-                        style: textTheme.titleSmall!.copyWith(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 16),
-                            child: Text(
-                            'product.stock.toString()',
-                            style: textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.w300,
-                            ),
-                            ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                          Text(
+                          product['name'],
+                          style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
                           ),
+                        ),
                         DView.spaceHeight(4),
-                        Padding(
-                            padding: const EdgeInsets.only(right: 16),
-                          child: Text(
-                              "product.unit??''",
-                              style: textTheme.titleSmall!.copyWith(
-                                color: Colors.white70,
-                              ),
+                          Text(
+                            product['code'],
+                            style: textTheme.titleSmall!.copyWith(
+                              color: Colors.white70,
                             ),
                           ),
-                        ],
+                          DView.spaceHeight(16), 
+                          Text(
+                            product['price'],
+                            style: textTheme.titleSmall!.copyWith(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          ],
+                        ),
                       ),
-                      PopupMenuButton<String>(
-                          onSelected: (value) {
-                            if (value == 'delete') 
-                              // Logika untuk menghapus produk
-                              // deleteProduct(product.code!);
-                            }
-                          },
-                          itemBuilder: (context) => [
-                            
-                            const PopupMenuItem(
-                              value: 'delete',
-                              child: Text('Delete'),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 16),
+                                child: Text(
+                                product['quantity'],
+                                style: textTheme.titleLarge!.copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                ),
+                              ),
+                            DView.spaceHeight(4),
+                            Padding(
+                                padding: const EdgeInsets.only(right: 16),
+                              child: Text(
+                                  product['unit'],
+                                  style: textTheme.titleSmall!.copyWith(
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          PopupMenuButton<String>(
+                              onSelected: (value) {
+                                if (value == 'delete') 
+                                  // Logika untuk menghapus produk
+                                  cAddInOut.delete(product);
+                                  // deleteProduct(product.code!);
+                                }
+                              },
+                              itemBuilder: (context) => [
+                                
+                                const PopupMenuItem(
+                                  value: 'delete',
+                                  child: Text('Delete'),
+                                ),
+                              ],
+                              icon: const Icon(Icons.more_horiz),
                             ),
                           ],
-                          icon: const Icon(Icons.more_horiz),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ); 
-            },
-          ),
+                  ); 
+                },
+                          );
+              }
+            ),
         ],
       ),
     );
