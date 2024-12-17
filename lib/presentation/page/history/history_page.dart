@@ -114,10 +114,8 @@ class _HistoryPageState extends State<HistoryPage> {
                         .add(const Duration(days: 30)),
 
                   );
-                  if(result != null) {
-                    controllerSearch.text = DateFormat('yyyy-MM-dd').format(result);
-                  }
-                },
+                  controllerSearch.text = DateFormat('yyyy-MM-dd').format(result);
+                                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,

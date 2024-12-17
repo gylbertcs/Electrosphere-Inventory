@@ -8,11 +8,9 @@ class SourceInOut {
   static Future<int> count(String type) async {
     String url = '${Api.inout}/${Api.count}';
     String? responseBody = await AppRequest.post(url,{'type':type});
-    if (responseBody != null) {
-      Map result = jsonDecode(responseBody);
-      return result['data'];
-    }
-    return 0;
+    Map result = jsonDecode(responseBody);
+    return result['data'];
+      return 0;
   }
 
     static Future<Map<String, dynamic>> analysis(String type) async {
@@ -21,25 +19,25 @@ class SourceInOut {
       'type': type,
       'today': DateTime.now().toIso8601String(),
     });
-    if (responseBody != null) {
-      Map result = jsonDecode(responseBody);
-      if (result['success']) {
-       //List list = result['data'];
-        return {
-          'list_total' : result['list_total'],
-          'data': result['data'],
-        };
-      }
+    Map result = jsonDecode(responseBody);
+    if (result['success']) {
+     //List list = result['data'];
       return {
-        'list_total' : [0,0,0,0,0,0,0],
-        'data' : [],
+        'list_total' : result['list_total'],
+        'data': result['data'],
       };
-      }
-  
+    }
+    return {
+      'list_total' : [0,0,0,0,0,0,0],
+      'data' : [],
+    };
+      
     return {
       'list_total' : [0,0,0,0,0,0,0],
       'data' : [],
     };
   }
+
+  static add({required String listProduct, required String type, required String totalPrice}) {}
 
 }

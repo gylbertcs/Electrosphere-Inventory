@@ -8,11 +8,9 @@ class SourceHistory {
   static Future<int> count() async {
     String url = '${Api.history}/${Api.count}';
     String? responseBody = await AppRequest.gets(url);
-    if (responseBody != null) {
-      Map result = jsonDecode(responseBody);
-      return result['data'];
-    }
-    return 0;
+    Map result = jsonDecode(responseBody);
+    return result['data'];
+      return 0;
   }
 
   static Future<List<History>> gets(int page) async {
@@ -20,15 +18,13 @@ class SourceHistory {
     String? responseBody = await AppRequest.post(url,{
       'page':'$page'
     });
-    if (responseBody != null) {
-      Map result = jsonDecode(responseBody);
-      if (result['success']) {
-        List list = result['data'];
-        return list.map((e)=> History.fromJson(e)).toList();
-      }
-      return [];
+    Map result = jsonDecode(responseBody);
+    if (result['success']) {
+      List list = result['data'];
+      return list.map((e)=> History.fromJson(e)).toList();
     }
     return [];
+      return [];
   }
 
     static Future<List<History>> search(String query) async {
@@ -36,15 +32,13 @@ class SourceHistory {
     String? responseBody = await AppRequest.post(url,{
       'date':query
     });
-    if (responseBody != null) {
-      Map result = jsonDecode(responseBody);
-      if (result['success']) {
-        List list = result['data'];
-        return list.map((e)=> History.fromJson(e)).toList();
-      }
-      return [];
+    Map result = jsonDecode(responseBody);
+    if (result['success']) {
+      List list = result['data'];
+      return list.map((e)=> History.fromJson(e)).toList();
     }
     return [];
+      return [];
   }
 }
 

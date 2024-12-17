@@ -67,7 +67,10 @@ if (cIN.listTotal.length > 6 && cIN.listTotal[6] == 0 && cIN.listTotal[5] == 0) 
           IconButton(
             onPressed: () {
               Get.to(() => AddInOutPage(type: widget.type))?.then((value)
-               { cIN.getAnalysis();
+               {if(value??false){
+                cIN.getAnalysis();
+               }
+                 
              } );
             },
             icon: const Icon(Icons.add),
