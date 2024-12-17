@@ -11,10 +11,10 @@ class AppRequest {
         Uri.parse(url), 
         headers: headers,
         );
-      DMethod.printTitle('block try request GET', response.body);
+            DMethod.printTitle('try - $url', response.body);
       return response.body;
     } catch (e) {
-      DMethod.printTitle('block catch request GET', e.toString());
+            DMethod.printTitle('catch - $url', e.toString());
       return null;
     }
    }
@@ -30,10 +30,10 @@ class AppRequest {
         body: data, 
         headers: headers,
         );
-      DMethod.printTitle('block try request POST', response.body);
+      DMethod.printTitle('try - $url', response.body);
       return response.body;
     } catch (e) {
-      DMethod.printTitle('block catch request POST', e.toString());
+      DMethod.printTitle('catch - $url', e.toString());
       return null;
     }
    }
