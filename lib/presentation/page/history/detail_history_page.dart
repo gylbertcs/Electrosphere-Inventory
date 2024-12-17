@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:d_info/d_info.dart';
+import 'package:electrosphereinventory/data/model/history.dart';
 import 'package:electrosphereinventory/data/source/source_inout.dart';
 import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 import 'package:electrosphereinventory/presentation/page/inout/pick_product_page.dart';
@@ -6,21 +9,18 @@ import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
 import '../../controller/c_add_inout.dart';
-import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
-import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 
 
-
-class AddInOutPage extends StatefulWidget {
-  const AddInOutPage({Key? key, required this.type}) : super(key: key);
-  final String type;
+class DetailHistoryPage extends StatefulWidget {
+  const DetailHistoryPage({Key? key, required this.idhHistory}) : super(key: key);
+  final String idhHistory;
 
   @override
-  State<AddInOutPage> createState() => _AddInOutPageState();
+  State<DetailHistoryPage> createState() => _DetailHistoryPageState();
 }
 
-class _AddInOutPageState extends State<AddInOutPage> {
-  final cAddInOut = Get.put(CAddInOut());
+class _DetailHistoryPageState extends State<DetailHistoryPage> {
+  final cDetailHistory = Get.put(cDetailHistory());
   
   @override
   Widget build(BuildContext context) {
@@ -28,46 +28,31 @@ class _AddInOutPageState extends State<AddInOutPage> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
-        title: Text('Add ${widget.type}'),
+        title:const Text('2022-05-18'),
         actions: [
-          IconButton(
-            onPressed: () async{ 
-              bool yes = await  DInfo.dialogConfirmation(context,'Confirmation Add', 'Yes to Confirm');
-              if(yes) {
-                cAddInOut.addInOut(widget.type); 
-              }
-            },
-            icon: const Icon(Icons.check),
-          ),
+         Obx(
+           () {
+            if (cDetailHistory.data.type ==null) return const SizedBox();
+             return  cDetailHistory.data.type == 'IN'
+                      ? const Icon(Icons.south_west, color: Colors.green)
+                      : const Icon(Icons.north_east, color: Colors.red);
+           }
+         ),
+         DView.spaceWidth(),
         ],
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: ElevatedButton(
-              onPressed: () {
-                Get.to(() => PickProductPage(type: widget.type))?.then((value) {
-                  if (value != null) {
-                    cAddInOut.add(value);
-                  }
-                });
-              },
-              child: const Text('Pick product'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-            child: DView.textTitle('List Product'),
-          ),
-          const Divider(indent: 16, endIndent: 16),
-          GetBuilder<cAddInOut>(
+          GetBuilder<CDetailHistory>(
             builder: (_) {
-              if (cAddInOut.list.isEmpty) return DView.empty();
+              if(cDetailHistory.data.idhHistory==null) return DView.empty();
+              List list = jsonDecode(cDetailHistory.data.listProduct!);
+              List listProduct = list.map((e) => jsonDecode(e)). toList();
+              if (listProduct.isEmpty) return DView.empty();
               return ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: cAddInOut.list.length,
+                itemCount: list.length,
                 separatorBuilder: (context, index) {
                   return const Divider(
                     height: 1,
@@ -77,7 +62,7 @@ class _AddInOutPageState extends State<AddInOutPage> {
                   );
                 },
                 itemBuilder: (context, index) {
-                  Map product = cAddInOut.list[index];
+                  Map product = list[index];
                   return Padding(
                     padding: EdgeInsets.fromLTRB(
                       16,
@@ -147,21 +132,7 @@ class _AddInOutPageState extends State<AddInOutPage> {
                                 ),
                               ],
                             ),
-                            PopupMenuButton<String>(
-                              onSelected: (value) {
-                                if (value == 'delete') {
-                                  // Logika untuk menghapus produk
-                                  cAddInOut.delete(product);
-                                }
-                              },
-                              itemBuilder: (context) => [
-                                const PopupMenuItem(
-                                  value: 'delete',
-                                  child: Text('Delete'),
-                                ),
-                              ],
-                              icon: const Icon(Icons.more_horiz),
-                            ),
+                            
                           ],
                         ),
                       ],
@@ -176,7 +147,9 @@ class _AddInOutPageState extends State<AddInOutPage> {
           Center(
             child: Obx(
                () {
-                return Text('Rp ${cAddInOut.totalPrice.toStringAsFixed(2)}' ,
+                double totalPrice = double.parse(cDetailHistory.data.totalPrice?? '0'); 
+                return Text(
+                  'Rp ${totalPrice.toStringAsFixed(2)}' ,
                 style: textTheme.headlineSmall!.copyWith(
                   color: Colors.green,
                 ),
@@ -188,4 +161,4 @@ class _AddInOutPageState extends State<AddInOutPage> {
       ),
     );
   }
-  
+}

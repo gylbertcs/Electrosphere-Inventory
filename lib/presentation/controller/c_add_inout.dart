@@ -47,8 +47,7 @@ addInOut(String type) async{
       );
     } else {
       DInfo.dialogError('Failed Add $type');
-      DInfo.closeDialog(
-      );
+      DInfo.closeDialog();
 
   }
 }

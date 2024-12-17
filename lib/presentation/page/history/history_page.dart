@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 // import 'package:get/get_core/src/get_main.dart';
 
 import '../../../data/model/history.dart';
+import 'detail_history_page.dart';
 //import '../../controller/c_history.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -44,6 +45,9 @@ class _HistoryPageState extends State<HistoryPage> {
                 return Column(
                   children: [
                     ListTile(
+                      onTap:() {
+                        Get.to(()=>DetailHistoryPage (idhHistory: '${history.idHistory}',));
+                      },
                       leading: history.type == 'IN'
                       ? const Icon(Icons.south_west, color: Colors.green)
                       : const Icon(Icons.north_east, color: Colors.red),
