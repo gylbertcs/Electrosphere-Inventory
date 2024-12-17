@@ -52,8 +52,7 @@ class _PickProductPageState extends State<PickProductPage> {
    );
    if(yes) {
       int stock = await SourceProduct.stock(product.code!);
-      if(widget.type=='IN') {
-        Map<String,dynamic> data = {
+       Map<String,dynamic> data = {
           'code':product.code, 
           'name' : product.name,
           'price' :product.price,
@@ -61,8 +60,15 @@ class _PickProductPageState extends State<PickProductPage> {
           'unit' : product.unit,
           'quantity' : controllerQuantity.text,
         };
+      if(widget.type=='IN') { 
         Get.back(result : data);
-      } else {}
+      } else {
+        if(int.parse(controllerQuantity.text)> stock) {
+          DInfo.toastError('Quantity is bigger than stock');
+        } else{
+        Get.back(result : data);
+        }
+      }
    }
   }
 
