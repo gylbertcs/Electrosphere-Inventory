@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
 import '../../controller/c_add_inout.dart';
+import '../../controller/c_detail_history.dart';
 
 
 class DetailHistoryPage extends StatefulWidget {
@@ -20,8 +21,13 @@ class DetailHistoryPage extends StatefulWidget {
 }
 
 class _DetailHistoryPageState extends State<DetailHistoryPage> {
-  final cDetailHistory = Get.put(cDetailHistory());
-  
+  final cDetailHistory = Get.put(CDetailHistory());
+  @override
+  void initState() {
+    cDetailHistory.setData(widget.idhHistory);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -45,14 +51,13 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
         children: [
           GetBuilder<CDetailHistory>(
             builder: (_) {
-              if(cDetailHistory.data.idhHistory==null) return DView.empty();
-              List list = jsonDecode(cDetailHistory.data.listProduct!);
-              List listProduct = list.map((e) => jsonDecode(e)). toList();
+              if(cDetailHistory.data.idHistory==null) return DView.empty();
+              List listProduct = jsonDecode(cDetailHistory.data.listProduct!);
               if (listProduct.isEmpty) return DView.empty();
               return ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: list.length,
+                itemCount: listProduct.length,
                 separatorBuilder: (context, index) {
                   return const Divider(
                     height: 1,

@@ -1,11 +1,15 @@
+import 'package:electrosphereinventory/data/model/history.dart';
 import 'package:get/get.dart';
 import '../../data/model/user.dart';
+import '../../data/source/source_history.dart';
 
-class CUser extends GetxController {
+class CDetailHistory extends GetxController {
   final Rx<User> _data = User().obs;
-  User get data => _data.value;
-  set data(User newData) {
-    _data.value = newData;
+  History get data => _data.value;
+  set data(String idHistory) async {
+    _data.value = await SourceHistory.getWhereId(idHistory);
+    update();
   }
+
 }
 
