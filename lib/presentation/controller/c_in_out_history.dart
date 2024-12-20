@@ -33,8 +33,8 @@ class CInOutHistory extends GetxController {
     update();
   }
 
-  search(String query) async {
-    _list.value = await SourceHistory.search(query);
+  search(String query, String type) async {
+    _list.value = await SourceHistory.search(query,type);
     update();
   }
 }

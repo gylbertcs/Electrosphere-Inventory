@@ -142,7 +142,7 @@ class _InOutHistoryPageState extends State<InOutHistoryPage> {
                   suffixIcon: IconButton(
                     onPressed: () {
                       if (controllerSearch.text != '') {
-                        cInOutHistory.search(controllerSearch.text);
+                        cInOutHistory.search(controllerSearch.text, widget.type);
                       }
                     },
                     icon: const Icon(Icons.search, color: Colors.white),

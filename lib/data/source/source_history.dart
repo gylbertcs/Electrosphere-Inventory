@@ -30,7 +30,7 @@ static Future<List<History>> gets(int page) async {
 }
 
 
-   static Future<List<History>> search(String query) async {
+   static Future<List<History>> search(String query, String type) async {
   String url = '${Api.history}/${Api.search}';
   String? responseBody = await AppRequest.post(url, {'date': query});
   if (responseBody != null) {
@@ -43,4 +43,18 @@ static Future<List<History>> gets(int page) async {
   }
   return [];
 }
+
+static Future<Object> getWhereId(String id) async {
+  String url = '${Api.history}/where_id.php';
+  String? responseBody = await AppRequest.post(url, {'id_history': id});
+  if (responseBody != null) {
+    Map result = jsonDecode(responseBody);
+    if (result['success']) {
+      return History.fromJson(result['data']);
+    }
+    return [];
+  }
+  return [];
+}
+
 }

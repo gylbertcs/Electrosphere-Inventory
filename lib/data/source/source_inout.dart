@@ -70,5 +70,22 @@ static Future<List<History>> gets(int page, String type) async {
   }
   return [];
 }
+
+ static Future<List<History>> search(String query, String type) async {
+  String url = '${Api.inout}/${Api.search}';
+  String? responseBody = await AppRequest.post(
+    url, 
+    {'date': query,'type': type},
+    );
+  if (responseBody != null) {
+    Map result = jsonDecode(responseBody);
+    if (result['success']) {
+      List list = result['data'];
+      return list.map((e) => History.fromJson(e)).toList();
+    }
+    return [];
+  }
+  return [];
+}
 }
 
