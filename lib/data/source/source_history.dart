@@ -57,4 +57,25 @@ static Future<Object> getWhereId(String id) async {
   return [];
 }
 
+static Future<bool> delete(String idHistory async {
+    String url = '${Api.history}/delete_where_id.php';
+    String? responseBody = await AppRequest.post(url,{
+      'id_history' : idHistory});
+  if (responseBody != null) {
+    Map result = jsonDecode(responseBody);
+    return result['success'];
+}
+      return false;
+  }
+
+  static Future<bool> deleteAllBeforeDate(String date) async {
+    String url = '${Api.product}/delete_all_before_date.php';
+    String? responseBody = await AppRequest.post(url,{'date' : date});
+  if (responseBody != null) {
+    Map result = jsonDecode(responseBody);
+    return result['success'];
+}
+      return false;
+  }
+
 }

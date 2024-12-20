@@ -308,7 +308,12 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                 History history = cInOut.list[index];
                 return ListTile(
                    onTap:() {
-                        Get.to(()=>DetailHistoryPage (idhHistory: '${history.idHistory}',));
+                        Get.to(()=>
+                        DetailHistoryPage (idhHistory: '${history.idHistory}')) ?.then((value){
+                          if(value??false){
+                            cInOut.getAnalysis(widget.type);
+                          }
+                        });
                       },
                   leading: widget.type=='IN' 
                   ? const Icon(Icons.south_west, color: Colors.green)

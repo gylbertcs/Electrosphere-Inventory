@@ -22,6 +22,24 @@ class DetailHistoryPage extends StatefulWidget {
 
 class _DetailHistoryPageState extends State<DetailHistoryPage> {
   final cDetailHistory = Get.put(CDetailHistory());
+
+delete() async {
+      bool yes = await DInfo.dialogConfirmation(
+          context, 'Delete History', 'You sure to delete history?');
+    if (yes) {
+      bool success = await SourceHistory.deleteWhereId(widget.idHistory);
+      if (success) {
+        DInfo.dialogSuccess('Success Delete History');
+        DInfo.closeDialog(actionAfterClose: () {
+          Get.back(result: true);
+        });
+      } else {
+         DInfo.dialogError('Failed Delete History');
+        DInfo.closeDialog();
+      }
+    }  
+  }
+
   @override
   void initState() {
     cDetailHistory.setData(widget.idhHistory);
@@ -52,6 +70,13 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
          DView.spaceWidth(),
         ],
       ),
+
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        onPressed: () => delete(),
+        child: const Icon(Icons.delete),
+        ),
       body: ListView(
         children: [
           GetBuilder<CDetailHistory>(

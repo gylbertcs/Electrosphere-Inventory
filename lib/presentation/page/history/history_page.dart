@@ -46,7 +46,11 @@ class _HistoryPageState extends State<HistoryPage> {
                   children: [
                     ListTile(
                       onTap:() {
-                        Get.to(()=>DetailHistoryPage (idhHistory: '${history.idHistory}',));
+                        Get.to(()=>DetailHistoryPage (idhHistory: '${history.idHistory}'))?.then((value){
+                          if(value??false){
+                            cHistory.refreshList();
+                          }
+                        });
                       },
                       leading: history.type == 'IN'
                       ? const Icon(Icons.south_west, color: Colors.green)

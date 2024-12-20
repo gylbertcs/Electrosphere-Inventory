@@ -36,6 +36,13 @@ class CHistory extends GetxController {
     update();
   }
 
+  refreshList() {
+    _list.value.clear();
+    _page.value = 1;
+    _hasNext.value = true;
+    getList();
+  }
+
   @override
   void onInit() {
     getList();

@@ -37,5 +37,13 @@ class CInOutHistory extends GetxController {
     _list.value = await SourceHistory.search(query,type);
     update();
   }
+
+ refreshData(String type) {
+    _list.value.clear();
+    _page.value = 1;
+    _hasNext.value = true;
+    getList(type);
+  }
+
 }
 
