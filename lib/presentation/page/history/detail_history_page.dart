@@ -8,8 +8,10 @@ import 'package:electrosphereinventory/presentation/page/inout/pick_product_page
 import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
+import '../../../data/source/source_history.dart';
 import '../../controller/c_add_inout.dart';
 import '../../controller/c_detail_history.dart';
+import '../../controller/c_user.dart';
 
 
 class DetailHistoryPage extends StatefulWidget {
@@ -22,6 +24,7 @@ class DetailHistoryPage extends StatefulWidget {
 
 class _DetailHistoryPageState extends State<DetailHistoryPage> {
   final cDetailHistory = Get.put(CDetailHistory());
+  final cUser = Get.put(CUser()); 
 
 delete() async {
       bool yes = await DInfo.dialogConfirmation(
@@ -74,7 +77,14 @@ delete() async {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
-        onPressed: () => delete(),
+        onPressed: () {
+          if(cuser.data.level=='Admin' ){
+            delete();
+          }else{
+            
+            DInfo.toastError('You have no access');
+          }
+        },
         child: const Icon(Icons.delete),
         ),
       body: ListView(
