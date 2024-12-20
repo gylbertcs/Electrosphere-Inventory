@@ -1,3 +1,4 @@
+import 'package:d_info/d_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:electrosphereinventory/data/model/product.dart';
@@ -11,7 +12,7 @@ class CProduct extends GetxController {
         }
 
         final RxList<Product> _list = <Product>[].obs;
-        List<Product> get list => _list.value;
+        List<Product> get list => _list.toList();
         setList() async {
           loading = true;
           _list.value = await SourceProduct.gets();
@@ -37,6 +38,15 @@ class CProduct extends GetxController {
             child: const Text('No'),
           ),
         );
+
+        if (yes == true) {
+      // Call the delete method on your data source here
+      await SourceProduct.delete(code);
+      // Remove the product from the list after successful deletion
+      _list.removeWhere((product) => product.code == code);
+      DInfo.dialogSuccess('Product deleted successfully!');
+    }
+  
       }
     
       @override

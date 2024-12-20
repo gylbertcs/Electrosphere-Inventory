@@ -1,6 +1,7 @@
 import 'package:d_chart/d_chart.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
+import 'package:electrosphereinventory/config/app_format.dart';
 import 'package:electrosphereinventory/data/model/history.dart';
 import 'package:electrosphereinventory/presentation/controller/c_in_out.dart';
 import 'package:electrosphereinventory/presentation/page/history/detail_history_page.dart';
@@ -122,7 +123,7 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                       ],
                     ),
                   ),
-                  DView.spaceWidth(10),
+                  DView.width(10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +136,7 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                             color: widget.type == 'IN' ? AppColor.historyIn : AppColor.historyOut,
                               
                             ),
-                            DView.spaceWidth(8),
+                            DView.width(8),
                             Text(
                               'Today',
                               style: Theme.of(context)
@@ -147,7 +148,7 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                             ),
                           ],
                         ),
-                        DView.spaceHeight(),
+                        DView.height(),
                         Row(
                           children: [
                             Container(
@@ -155,7 +156,7 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                               width: 20,
                               color: AppColor.primary,
                             ),
-                            DView.spaceWidth(8),
+                            DView.width(8),
                             Text(
                               'Yesterday',
                               style: Theme.of(context)
@@ -167,11 +168,12 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                             ),
                           ],
                         ),
-                        DView.spaceHeight(30),
+                        DView.height(30),
                         Builder(
                           builder: (context) {
+                            String percent = cInOut.percentDifferent.toStringAsFixed(1);
                             return Text(
-                              '${cInOut.percentDifferent}% ${cInOut.textDifferent}\nthan yesterday\nor equal to',
+                              '$percent% ${cInOut.textDifferent}\nthan yesterday\nor equal to',
                               maxLines: 5,
                               style: Theme.of(context)
                                   .textTheme
@@ -183,11 +185,12 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                             );
                           }
                         ),
-                        DView.spaceHeight(8),
+                        DView.height(8),
                         Builder(
                           builder: (context) {
                             return Text(
-                              'Rp ${cInOut.different.toStringAsFixed(2)}',
+                              
+                              'Rp ${AppFormat.currency(cInOut.different.toString())}',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
@@ -201,7 +204,7 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                       ],
                     ),
                   ),
-                  DView.spaceWidth(16),
+                  DView.width(16),
                 ],
               ),
             ),
@@ -323,11 +326,12 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        history.createdAt ?? '',
+                        AppFormat.date(history.createdAt!),
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Text(
-                        'Rp ${history.totalPrice}',
+                  
+                        'Rp ${AppFormat.currency(history.totalPrice ?? '0')}',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],

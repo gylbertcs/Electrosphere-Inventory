@@ -18,13 +18,13 @@ class CInOutHistory extends GetxController {
   int get page => _page.value;
 
   final RxList<History> _list = <History>[].obs;
-  List<History> get list => _list.value;
+  List<History> get list => _list;
   getList(String type) async{
     _fetchData.value = true;
     update();
 
     List<History> newList = await SourceInOut.gets(page,type);
-    _list.value.addAll(newList);
+    _list.addAll(newList);
 
     if (newList.length < 10) _hasNext.value = false;
     _page.value = page + 1;
@@ -39,7 +39,7 @@ class CInOutHistory extends GetxController {
   }
 
  refreshData(String type) {
-    _list.value.clear();
+    _list.clear();
     _page.value = 1;
     _hasNext.value = true;
     getList(type);

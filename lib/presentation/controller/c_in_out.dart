@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 
 class CInOut extends GetxController {
         final RxList<History> _list = <History>[].obs;
-        List<History> get list => _list.value;
+        List<History> get list => _list;
         setList(List newList) {
           _list.value = newList.map((e)=> History.fromJson(e)).toList();
           update();
         }
 
         final RxList<double> _listTotal = <double>[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0].obs;
-        List<double> get listTotal => _listTotal.value;
+        List<double> get listTotal => _listTotal;
         setListTotal(List newList) {
           _listTotal.value = newList.map((e)=> double.parse('$e')).toList();
 

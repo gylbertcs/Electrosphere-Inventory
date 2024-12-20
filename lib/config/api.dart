@@ -1,5 +1,5 @@
 class Api {
-  static const _baseUrl = 'http://192.168.215.37/api_electrosphereinventory';
+  static const _baseUrl = 'http://192.168.56.1/api_electrosphereinventory';
   static const user = '$_baseUrl/user';
   static const product = '$_baseUrl/product';
   static const history = '$_baseUrl/history';

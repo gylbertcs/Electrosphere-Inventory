@@ -2,12 +2,10 @@ import 'package:d_info/d_info.dart';
 import 'package:d_input/d_input.dart';
 import 'package:electrosphereinventory/data/model/product.dart';
 import 'package:electrosphereinventory/data/source/source_product.dart';
-import 'package:electrosphereinventory/presentation/page/product/add_update_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/presentation/controller/c_product.dart';
 import 'package:get/get.dart';
-import 'dart:convert';
 
 
 class PickProductPage extends StatefulWidget {
@@ -33,7 +31,7 @@ class _PickProductPageState extends State<PickProductPage> {
         DInput(controller: controllerQuantity,hint:'50',
         inputType: TextInputType.number ,
         ),
-        DView.spaceHeight(8),
+        DView.height(8),
         const Text('Yes to confirm'),
       ],
     ),
@@ -126,14 +124,14 @@ class _PickProductPageState extends State<PickProductPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      DView.spaceHeight(4),
+                      DView.height(4),
                         Text(
                           product.code??'',
                           style: textTheme.titleSmall!.copyWith(
                             color: Colors.white70,
                           ),
                         ),
-                        DView.spaceHeight(16), 
+                        DView.height(16), 
                         Text(
                           'Rp ${product.price??''}',
                           style: textTheme.titleSmall!.copyWith(
@@ -158,7 +156,7 @@ class _PickProductPageState extends State<PickProductPage> {
                               ),
                               ),
                             ),
-                          DView.spaceHeight(4),
+                          DView.height(4),
                           Padding(
                               padding: const EdgeInsets.only(right: 16),
                             child: Text(

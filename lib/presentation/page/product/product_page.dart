@@ -1,4 +1,5 @@
 import 'package:d_info/d_info.dart';
+import 'package:electrosphereinventory/config/app_format.dart';
 import 'package:electrosphereinventory/data/model/product.dart';
 import 'package:electrosphereinventory/data/source/source_product.dart';
 import 'package:electrosphereinventory/presentation/page/product/add_update_product_page.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/presentation/controller/c_product.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -16,6 +18,9 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   final cProduct = Get.put(CProduct());
+
+  final logger = Logger();
+
   deleteProduct(String code) async {
       bool? yes = await DInfo.dialogConfirmation(
     context,
@@ -26,18 +31,18 @@ class _ProductPageState extends State<ProductPage> {
     if (yes == true) {
       bool success = await SourceProduct.delete(code);
       if (success) {
-        print('Success Delete Product');
+        logger.i('Success Delete Product');
         DInfo.dialogSuccess('Success Delete Product');
         DInfo.closeDialog(actionAfterClose: () {
           cProduct.setList();
         });
       } else {
-        print('Failed Delete product');
+        logger.e('Failed Delete product');
         DInfo.dialogError('Failed Delete Product');
         DInfo.closeDialog();
       }
     }  else {
-      print('User canceled the dialog');
+      logger.w('User canceled the dialog');
     }
   }
   @override
@@ -99,16 +104,16 @@ class _ProductPageState extends State<ProductPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    DView.spaceHeight(4),
+                    DView.height(4),
                       Text(
                         product.code??'',
                         style: textTheme.titleSmall!.copyWith(
                           color: Colors.white70,
                         ),
                       ),
-                      DView.spaceHeight(16), 
+                      DView.height(16), 
                       Text(
-                        'Rp ${product.price??''}',
+                        'Rp ${AppFormat.currency(product.price??'0')}',
                         style: textTheme.titleSmall!.copyWith(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,
@@ -131,7 +136,7 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                             ),
                           ),
-                        DView.spaceHeight(4),
+                        DView.height(4),
                         Padding(
                             padding: const EdgeInsets.only(right: 16),
                           child: Text(

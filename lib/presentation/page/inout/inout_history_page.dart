@@ -1,5 +1,6 @@
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
+import 'package:electrosphereinventory/config/app_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -11,7 +12,7 @@ import '../history/detail_history_page.dart';
 //import '../../controller/c_history.dart';
 
 class InOutHistoryPage extends StatefulWidget {
-  const InOutHistoryPage({Key? key, required this.type}) : super(key: key);
+  const InOutHistoryPage({super.key, required this.type});
   final String type;
 
   @override
@@ -66,7 +67,7 @@ class _InOutHistoryPageState extends State<InOutHistoryPage> {
                       children: [
                         Text(
                           AppFormat.date(history.createdAt!),
-                          style: Theme.of(context).textTheme.subtitle2,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                         Text(
                           'Rp ${AppFormat.currency(history.totalPrice ?? '0')}',

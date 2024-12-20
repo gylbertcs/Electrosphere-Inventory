@@ -11,10 +11,10 @@ class CAddInout extends GetxController {
   double get totalPrice => _totalPrice.value;
 
   final RxList<Map> _list = <Map>[].obs;
-  List<Map> get list => _list.value;
+  List<Map> get list => _list.toList();
 
   add(newData) async {
-    _list.value.add(newData);
+    _list.add(newData);
     double quantity = double.parse(newData['quantity'].toString());
     double price = double.parse(newData['price'].toString());
     _totalPrice.value += quantity * price; 
@@ -22,7 +22,7 @@ class CAddInout extends GetxController {
   }
 
   delete(Map data) {
-    _list.value.remove(data);
+    _list.remove(data);
     double quantity = double.parse(data['quantity'].toString());
     double price = double.parse(data['price'].toString());
     _totalPrice.value -= quantity * price;

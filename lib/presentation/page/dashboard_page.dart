@@ -233,7 +233,7 @@ logout() async {
     return GestureDetector(
       onTap: () {
         Get.to(()=> const InOutPage(type: 'OUT'))
-            ?.then ((value)=> cDashboard.setOut();
+            ?.then ((value)=> cDashboard.setOut()
            
             );
       },

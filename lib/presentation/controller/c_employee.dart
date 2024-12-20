@@ -13,7 +13,7 @@ class CEmployee extends GetxController {
         }
 
         final RxList<User> _list = <User>[].obs;
-        List<User> get list => _list.value;
+        List<User> get list => _list;
         setList() async {
           loading = true;
           update();

@@ -44,7 +44,7 @@ static Future<List<History>> gets(int page) async {
   return [];
 }
 
-static Future<Object> getWhereId(String id) async {
+static Future<History> getWhereId(String id) async {
   String url = '${Api.history}/where_id.php';
   String? responseBody = await AppRequest.post(url, {'id_history': id});
   if (responseBody != null) {
@@ -52,12 +52,12 @@ static Future<Object> getWhereId(String id) async {
     if (result['success']) {
       return History.fromJson(result['data']);
     }
-    return [];
+  
   }
-  return [];
+  return History();
 }
 
-static Future<bool> delete(String idHistory async {
+static Future<bool> delete(String idHistory) async {
     String url = '${Api.history}/delete_where_id.php';
     String? responseBody = await AppRequest.post(url,{
       'id_history' : idHistory});

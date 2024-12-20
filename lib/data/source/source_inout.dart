@@ -18,7 +18,7 @@ class SourceInOut {
   
  
 
-    Future<Map<String, dynamic>> analysis(String type) async {
+    static Future<Map<String, dynamic>> analysis(String type) async {
     String url = '${Api.inout}/analysis.php';
     String? responseBody = await AppRequest.post(url,{
       'type': type,
@@ -39,7 +39,7 @@ class SourceInOut {
       
   }
 
-Future<bool> add({
+static Future<bool> add({
   required String listProduct,
   required String type,
   required String totalPrice,

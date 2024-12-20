@@ -20,7 +20,7 @@ class _EmployeePageState extends State<EmployeePage> {
 
   delete(String idUser) async {
     bool yes = await DInfo.dialogConfirmation(
-        context, 'Delete Employee', 'Yes to confirm');
+        context, 'Delete Employee', 'Yes to confirm') ?? false;
     if (yes) {
       bool success = await SourceUser.delete(idUser);
       if (success) {

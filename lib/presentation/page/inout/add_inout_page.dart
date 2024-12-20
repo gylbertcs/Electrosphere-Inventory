@@ -1,11 +1,9 @@
 import 'package:d_info/d_info.dart';
-import 'package:electrosphereinventory/data/source/source_inout.dart';
 import 'package:electrosphereinventory/presentation/page/inout/pick_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
 import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
-
 
 
 class AddInOutPage extends StatefulWidget {
@@ -18,7 +16,7 @@ class AddInOutPage extends StatefulWidget {
 
 class _AddInOutPageState extends State<AddInOutPage> {
 
-  final cAddInOut = Get.put(CAddInOut());
+  final cAddInOut = Get.put(CAddInout());
   
   @override
   Widget build(BuildContext context) {
@@ -59,7 +57,7 @@ class _AddInOutPageState extends State<AddInOutPage> {
             child: DView.textTitle('List Product'),
           ),
           const Divider(indent: 16, endIndent: 16),
-          GetBuilder<CAddInOut>(
+          GetBuilder<CAddInout>(
             builder: (_) {
               if (cAddInOut.list.isEmpty) return DView.empty();
               return ListView.separated(
@@ -101,14 +99,14 @@ class _AddInOutPageState extends State<AddInOutPage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              DView.spaceHeight(4),
+                              DView.height(4),
                               Text(
                                 product['code'],
                                 style: textTheme.titleSmall!.copyWith(
                                   color: Colors.white70,
                                 ),
                               ),
-                              DView.spaceHeight(16),
+                              DView.height(16),
                               Text(
                                 product['price'],
                                 style: textTheme.titleSmall!.copyWith(
@@ -133,7 +131,7 @@ class _AddInOutPageState extends State<AddInOutPage> {
                                     ),
                                   ),
                                 ),
-                                DView.spaceHeight(4),
+                                DView.height(4),
                                 Padding(
                                   padding: const EdgeInsets.only(right: 16),
                                   child: Text(
@@ -169,7 +167,7 @@ class _AddInOutPageState extends State<AddInOutPage> {
               );
             },
           ),
-          DView.spaceHeight(30),
+          DView.height(30),
           Center(child: Text('Total: ',style: textTheme.headlineMedium,)),
           Center(
             child: Obx(

@@ -44,7 +44,7 @@ dependencies:
   d_input: ^0.5.1
   intl: ^0.20.1
   d_chart: ^2.10.2
-
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:

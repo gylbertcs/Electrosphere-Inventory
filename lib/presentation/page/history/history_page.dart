@@ -1,6 +1,7 @@
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
+import 'package:electrosphereinventory/config/app_format.dart';
 import 'package:electrosphereinventory/presentation/controller/c_history.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,7 +48,7 @@ class _HistoryPageState extends State<HistoryPage> {
               },
               child: const Text('Pick Date'),
             ),
-            DView.spaceHeight(8),
+            DView.height(8),
             TextField(
               controller: controller,
               enabled: false,
@@ -151,11 +152,11 @@ floatingActionButton: FloatingActionButton(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            history.createdAt??"",
+                            AppFormat.date(history.createdAt!),
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(
-                            'Rp ${history.totalPrice}',
+                            'Rp ${AppFormat.currency(history.totalPrice ?? '0')}',
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ],
@@ -184,7 +185,7 @@ floatingActionButton: FloatingActionButton(
                   ),
                 ),
 
-                DView.spaceHeight(80),
+                DView.height(80),
             ],
           );
         }
@@ -209,7 +210,9 @@ floatingActionButton: FloatingActionButton(
                         .add(const Duration(days: 30)),
 
                   );
+                  if (result != null) {
                   controllerSearch.text = DateFormat('yyyy-MM-dd').format(result);
+                  }
                                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -225,7 +228,7 @@ floatingActionButton: FloatingActionButton(
                   suffixIcon: IconButton(
                     onPressed: () {
                       if (controllerSearch.text != '') {
-                        cHistory.search(controllerSearch.text);
+                        cHistory.search(controllerSearch.text,'date');
                       }
                     },
                     icon: const Icon(Icons.search, color: Colors.white),

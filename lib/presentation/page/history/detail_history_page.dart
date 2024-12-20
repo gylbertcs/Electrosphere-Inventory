@@ -1,15 +1,11 @@
 import 'dart:convert';
 
 import 'package:d_info/d_info.dart';
-import 'package:electrosphereinventory/data/model/history.dart';
-import 'package:electrosphereinventory/data/source/source_inout.dart';
-import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
-import 'package:electrosphereinventory/presentation/page/inout/pick_product_page.dart';
+import 'package:electrosphereinventory/config/app_format.dart';
 import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
 import '../../../data/source/source_history.dart';
-import '../../controller/c_add_inout.dart';
 import '../../controller/c_detail_history.dart';
 import '../../controller/c_user.dart';
 
@@ -28,9 +24,9 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
 
 delete() async {
       bool yes = await DInfo.dialogConfirmation(
-          context, 'Delete History', 'You sure to delete history?');
+          context, 'Delete History', 'You sure to delete history?') ?? false;
     if (yes) {
-      bool success = await SourceHistory.deleteWhereId(widget.idHistory);
+      bool success = await SourceHistory.delete(widget.idhHistory);
       if (success) {
         DInfo.dialogSuccess('Success Delete History');
         DInfo.closeDialog(actionAfterClose: () {
@@ -58,7 +54,8 @@ delete() async {
         title:Obx(
            () {
               if(cDetailHistory.data.idHistory==null) return const Text ('');
-            return Text(cDetailHistory.data.createdAt ?? "");
+            return Text(
+              AppFormat.date(cDetailHistory.data.createdAt!));
           }
         ),
         actions: [
@@ -70,7 +67,7 @@ delete() async {
                       : const Icon(Icons.north_east, color: Colors.red);
            }
          ),
-         DView.spaceWidth(),
+         DView.width(),
         ],
       ),
 
@@ -78,7 +75,7 @@ delete() async {
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
         onPressed: () {
-          if(cuser.data.level=='Admin' ){
+          if(cUser.data.level=='Admin' ){
             delete();
           }else{
             
@@ -107,7 +104,7 @@ delete() async {
                   );
                 },
                 itemBuilder: (context, index) {
-                  Map product = list[index];
+                  Map product = listProduct[index];
                   return Padding(
                     padding: EdgeInsets.fromLTRB(
                       16,
@@ -133,16 +130,16 @@ delete() async {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              DView.spaceHeight(4),
+                              DView.height(4),
                               Text(
                                 product['code'],
                                 style: textTheme.titleSmall!.copyWith(
                                   color: Colors.white70,
                                 ),
                               ),
-                              DView.spaceHeight(16),
+                              DView.height(16),
                               Text(
-                                product['price'],
+                                'Rp ${AppFormat.currency(product['price'] ?? '0')}',
                                 style: textTheme.titleSmall!.copyWith(
                                   color: Colors.green,
                                   fontWeight: FontWeight.bold,
@@ -165,7 +162,7 @@ delete() async {
                                     ),
                                   ),
                                 ),
-                                DView.spaceHeight(4),
+                                DView.height(4),
                                 Padding(
                                   padding: const EdgeInsets.only(right: 16),
                                   child: Text(
@@ -187,14 +184,13 @@ delete() async {
               );
             },
           ),
-          DView.spaceHeight(30),
+          DView.height(30),
           Center(child: Text('Total: ',style: textTheme.headlineMedium,)),
           Center(
             child: Obx(
                () {
-                double totalPrice = double.parse(cDetailHistory.data.totalPrice?? '0'); 
                 return Text(
-                  'Rp ${totalPrice.toStringAsFixed(2)}' ,
+                  'Rp ${AppFormat.currency(cDetailHistory.data.totalPrice ?? '0')}',
                 style: textTheme.headlineSmall!.copyWith(
                   color: Colors.green,
                 ),

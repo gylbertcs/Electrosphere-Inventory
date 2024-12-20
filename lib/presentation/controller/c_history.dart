@@ -16,13 +16,13 @@ class CHistory extends GetxController {
   int get page => _page.value;
 
   final RxList<History> _list = <History>[].obs;
-  List<History> get list => _list.value;
+  List<History> get list => _list;
   getList() async{
     _fetchData.value = true;
     update();
 
     List<History> newList = await SourceHistory.gets(page);
-    _list.value.addAll(newList);
+    _list.addAll(newList);
 
     if (newList.length < 10) _hasNext.value = false;
     _page.value = page + 1;
@@ -31,13 +31,13 @@ class CHistory extends GetxController {
     update();
   }
 
-  search(String query) async {
-    _list.value = await SourceHistory.search(query);
+  search(String query, String type) async {
+    _list.value = await SourceHistory.search(query, type);
     update();
   }
 
   refreshList() {
-    _list.value.clear();
+    _list.clear();
     _page.value = 1;
     _hasNext.value = true;
     getList();

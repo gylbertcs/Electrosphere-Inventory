@@ -5,6 +5,8 @@ import 'package:electrosphereinventory/data/model/product.dart';
 import 'package:electrosphereinventory/data/source/source_product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+
 
 class AddUpdateProductPage extends StatefulWidget {
   const AddUpdateProductPage({super.key, this.product});
@@ -21,6 +23,8 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
   final controllerStock = TextEditingController(); 
   final controllerUnit = TextEditingController();   
   final formKey = GlobalKey<FormState>();
+
+  final logger = Logger();
 
   addProduct() async {
   bool? yes = await DInfo.dialogConfirmation(
@@ -39,18 +43,18 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
       ));
 
       if (success) {
-        print('Success Add New Product');
+        logger.i('Success Add New Product');
         DInfo.dialogSuccess('Success Add New Product');
         DInfo.closeDialog(actionAfterClose: () {
           Get.back(result: true);
         });
       } else {
-        print('Failed to add new product');
+        logger.e('Failed to add new product');
         DInfo.dialogError('Failed Add New Product');
         DInfo.closeDialog();
       }
     }  else {
-      print('User canceled the dialog');
+      logger.w('User canceled the dialog');
     }
   }
 
@@ -73,13 +77,13 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
         ));
 
         if (success) {
-          print('Success Update Product');
+          logger.i('Success Update Product');
           DInfo.dialogSuccess('Success Update Product');
           DInfo.closeDialog(actionAfterClose: () {
             Get.back(result: true);
           });
         } else {
-          print('Failed Update Product');
+          logger.e('Failed Update Product');
           DInfo.dialogError('Failed Update Product');
           DInfo.closeDialog();
         }
@@ -117,7 +121,7 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
             validator: (value)=>value==''?"Dont't Empty":null,
             isRequired: true,
             ),
-            DView.spaceHeight(),
+            DView.height(),
             DInput(
               controller: controllerName,
             hint: 'Your Name',
@@ -125,7 +129,7 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
             validator: (value)=>value==''?"Dont't Empty":null,
             isRequired: true,
             ),
-            DView.spaceHeight(),
+            DView.height(),
             DInput(
               controller: controllerPrice,
             hint: '2000000',
@@ -134,7 +138,7 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
             isRequired: true,
             inputType: TextInputType.number,
             ),
-            DView.spaceHeight(),
+            DView.height(),
             DInput(
               controller: controllerStock,
             hint: '50',
@@ -143,7 +147,7 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
             isRequired: true,
             inputType: TextInputType.number,
             ),
-            DView.spaceHeight(),
+            DView.height(),
             DInput(
               controller: controllerUnit,
             hint: 'Item',
@@ -151,7 +155,7 @@ class _AddUpdateProductPageState extends State<AddUpdateProductPage> {
             validator: (value)=>value==''?"Dont't Empty":null,
             isRequired: true,
             ),
-            DView.spaceHeight(),
+            DView.height(),
             ElevatedButton(
               onPressed: (){
                 if(formKey.currentState!.validate()){

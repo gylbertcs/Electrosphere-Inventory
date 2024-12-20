@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      DView.spaceHeight(
+                      DView.height(
                         MediaQuery.of(context).size.height * 0.15,
                       ),
                       Text(
@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                                   color: Colors.white,
                                 ),
                       ),
-                      DView.spaceHeight(8),
+                      DView.height(8),
                       Container(
                         height: 6,
                         width: 160,
@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      DView.spaceHeight(
+                      DView.height(
                         MediaQuery.of(context).size.height * 0.15,
                       ),
                     ],
@@ -130,10 +130,10 @@ class _LoginPageState extends State<LoginPage> {
                   Column(
                     children: [
                       input(controllerEmail, Icons.email, 'Email'),
-                      DView.spaceHeight(),
+                      DView.height(),
                       input(
                           controllerPassword, Icons.vpn_key, 'Password', true),
-                      DView.spaceHeight(),
+                      DView.height(),
                       SizedBox(
                         width: double.infinity,
                         height: 50,
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      DView.spaceHeight(
+                      DView.height(
                         MediaQuery.of(context).size.height * 0.15,
                       ),
                     ],

@@ -2,7 +2,6 @@ import 'package:d_info/d_info.dart';
 import 'package:d_input/d_input.dart';
 import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../../data/source/source_user.dart';
@@ -24,7 +23,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
     if (formKey.currentState!.validate()) {
       bool? yes = await DInfo.dialogConfirmation(
           context, 'Add Employee', 'Yes to confirm');
-      if (yes) {
+      if (yes ?? false) {
         bool success = await SourceUser.add(
           controllerName.text,
           controllerEmail.text,
@@ -71,7 +70,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
               controller: controllerPassword,
               validator: (value) => value == '' ? "Don't empty" : null,
             ),
-            DView.spaceHeight(),
+            DView.height(),
             ElevatedButton(
               onPressed: () => add(),
               child: const Text('Add'),
