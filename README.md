@@ -10,9 +10,9 @@ Link Figma : [LINK](https://www.figma.com/design/gPAEbwKWjsyXgeInVxLrRq/Pemob---
 <br> Front-End, Documentation <i>()</i>
 - Yohana Marito Marbun - 221402065
 <br> Back-End  <i>()</i>
-- Diva Anggreini Harahap - 221402094<br> Back-End  <i>()</i>
+- Diva Anggreini Harahap - 221402094<br> Back-End  <i>(Fullstack fitur History dan Kelola Stok IN)</i>
 - Fenaya Cecilly Nababan - 221402100<br> Front-End  <i>()</i>
-- Sakifa Indira Putri - 221402130<br> Front-End  <i>()</i>
+- Sakifa Indira Putri - 221402130<br> Front-End  <i>(Fullstack Kelola Produk)</i>
 
 ## Desc
 ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk mengelola inventarisasi barang-barang elektronik secara efisien. Aplikasi ini menawarkan kemudahan dalam mengelola produk, melacak riwayat stok barang, hingga mengelola pegawai. Produk yang di kelola berupa produk elektronik seperti smartphone, laptop, televisi, hingga peralatan elektronik rumah tangga lainnya. Dengan antarmuka yang user-friendly, pengguna dapat lebih mudah dan efisien dalam melakukan pengelolaan stok produk elektronik.
