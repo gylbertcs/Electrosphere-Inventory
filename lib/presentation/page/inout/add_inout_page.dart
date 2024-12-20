@@ -1,12 +1,9 @@
 import 'package:d_info/d_info.dart';
 import 'package:electrosphereinventory/data/source/source_inout.dart';
-import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 import 'package:electrosphereinventory/presentation/page/inout/pick_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:d_view/d_view.dart';
 import 'package:get/get.dart';
-import '../../controller/c_add_inout.dart';
-import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart';
 
 
@@ -20,6 +17,7 @@ class AddInOutPage extends StatefulWidget {
 }
 
 class _AddInOutPageState extends State<AddInOutPage> {
+
   final cAddInOut = Get.put(CAddInOut());
   
   @override
@@ -32,8 +30,8 @@ class _AddInOutPageState extends State<AddInOutPage> {
         actions: [
           IconButton(
             onPressed: () async{ 
-              bool yes = await  DInfo.dialogConfirmation(context,'Confirmation Add', 'Yes to Confirm');
-              if(yes) {
+              bool? yes = await  DInfo.dialogConfirmation(context,'Confirmation Add', 'Yes to Confirm');
+              if(yes == true) {
                 cAddInOut.addInOut(widget.type); 
               }
             },
@@ -61,7 +59,7 @@ class _AddInOutPageState extends State<AddInOutPage> {
             child: DView.textTitle('List Product'),
           ),
           const Divider(indent: 16, endIndent: 16),
-          GetBuilder<cAddInOut>(
+          GetBuilder<CAddInOut>(
             builder: (_) {
               if (cAddInOut.list.isEmpty) return DView.empty();
               return ListView.separated(
@@ -183,9 +181,10 @@ class _AddInOutPageState extends State<AddInOutPage> {
                 );
               }
             ),
-          ),
-        ],
-      ),
-    );
+            ),
+          ],
+        ),
+      );
+    }
   }
   

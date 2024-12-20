@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 // import 'package:get/get_core/src/get_main.dart';
 
 import '../../../data/model/history.dart';
+import '../../controller/c_in_out_history.dart';
 import '../history/detail_history_page.dart';
 //import '../../controller/c_history.dart';
 
@@ -19,8 +20,14 @@ class InOutHistoryPage extends StatefulWidget {
 }
 
 class _InOutHistoryPageState extends State<InOutHistoryPage> {
-  final cHistory = Get.put(CHistory());
+  final cInOutHistory = Get.put(CInOutHistory());
   final controllerSearch = TextEditingController();
+
+  @override
+  void initState() {
+    cInOutHistory.getList(widget.type);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +43,13 @@ class _InOutHistoryPageState extends State<InOutHistoryPage> {
         ),
       ),
 
-      body: GetBuilder<CHistory>(
+      body: GetBuilder<CInOutHistory>(
         builder: (_) {
-          if(cHistory.list.isEmpty) return DView.empty();
+          if(cInOutHistory.list.isEmpty) return DView.empty();
           return ListView(
             children: [
-              ...List.generate(cHistory.list.length, (index) {
-                History history = cHistory.list[index];
+              ...List.generate(cInOutHistory.list.length, (index) {
+                History history = cInOutHistory.list[index];
                 return Column(
                   children: [
                     ListTile(
@@ -87,11 +94,11 @@ class _InOutHistoryPageState extends State<InOutHistoryPage> {
                   ],
                 );
               }),
-              if(cHistory.hasNext)
-              cHistory.fetchData?DView.loadingCircle():
+              if(cInOutHistory.hasNext)
+              cInOutHistory.fetchData?DView.loadingCircle():
                 Center(
                   child: IconButton(
-                    onPressed: () => cHistory.getList(),
+                    onPressed: () => cInOutHistory.getList(widget.type),
                     icon: const Icon(Icons.refresh),
                   ),
                 ),
@@ -135,7 +142,7 @@ class _InOutHistoryPageState extends State<InOutHistoryPage> {
                   suffixIcon: IconButton(
                     onPressed: () {
                       if (controllerSearch.text != '') {
-                        cHistory.search(controllerSearch.text);
+                        cInOutHistory.search(controllerSearch.text);
                       }
                     },
                     icon: const Icon(Icons.search, color: Colors.white),
