@@ -95,7 +95,7 @@ TBA
    <li>Pindahkan file api_electrosphereinventory ke folder xampp/htdocs, lalu ekstrak pada direktori tersebut</li>
 5. Membuka aplikasi XAMPP lalu aktifkan Apache dan Mysql <br>
 6. Ketik `localhost/phpmyadmin/` di browser <br>
-7. Buatlah database baru bernama electrosphere, lalu pilih menu import <br>
+7. Buatlah database baru bernama `db_inventory`, lalu pilih menu import <br>
 8. Masukkan file .sql yang ada didalam folder project lalu klik "import"
 9. Jalankan Command Prompt (atau terminal sejenis) dan ketik `ipconfig` untuk melihat alamat IP perangkat
 10. Pastikan alamat IP yang dicatat sesuai dengan perangkat dan dapat diakses dalam jaringan yang sama
