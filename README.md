@@ -18,29 +18,47 @@
 ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk mengelola inventarisasi barang-barang elektronik secara efisien. Aplikasi ini menawarkan kemudahan dalam mengelola produk, melacak riwayat stok barang, hingga mengelola pegawai. Produk yang di kelola berupa produk elektronik seperti smartphone, laptop, televisi, hingga peralatan elektronik rumah tangga lainnya. Dengan antarmuka yang user-friendly, pengguna dapat lebih mudah dan efisien dalam melakukan pengelolaan stok produk elektronik.
 ## ⚙️ Features 
 
-### Pemilik Toko 🧑‍🦱
+### Admin 🧑‍🦱
 
+####  Login
+- Menggunakan email dan password
+  
 ####  Kelola Produk 🛠️
 - Menambahkan produk (dilengkapi fitur scan barcode)
 - Menghapus produk
-- Mengedit produk (detail produk, harga produk)
-- Muncul notifikasi jika stok hampir habis
+- Mengedit produk
 
 #### Kelola Stok 📦
 - Mengupdate stok manual
 - Melihat riwayat stok masuk dan keluar
 - Menentukan stok minimal produk
 
-#### Laporan 📊
-- Melihat laporan stok barang secara keseluruhan
-- Melihat laporan penjualan berdasarkan produk atau kategori
-- Ekspor laporan ke dalam format PDF atau Excel
-- Melihat laporan pegawai mengenai barang rusak atau retur
+#### Menu riwayat stok
+- Melihat daftar riwayat stok IN dan OUT secara keseluruhan
+- Melakukan filter berdasarkan tanggal
+- Menghapus riwayat stok IN atau stok OUT
 
-#### Log
-- Memantau aktivitas pegawai, seperti riwayat menambahkan produk
+#### Kelola Stok IN (stok masuk) 📊
+- Melihat daftar riwayat stok IN
+- Melihat visualisasi statistik dari riwayat stok IN
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok IN
+- Menghapus riwayat stok IN
+- Menambah data stok IN
 
-### Pegawai Toko (Sales)
+#### Kelola Stok OUT (stok keluar)
+- Melihat daftar riwayat stok OUT
+- Melihat visualisasi statistik dari riwayat stok OUT
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok OUT
+- Menghapus riwayat stok OUT
+- Menambah data stok OUT
+
+#### Kelola Pegawai
+- Menambah pegawai
+- Menghapus pegawai
+
+### Pegawai Toko
 
 ####  Kelola Produk 🛠️
 - Melihat produk
