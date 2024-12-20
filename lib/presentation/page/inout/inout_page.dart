@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'add_inout_page.dart';
+import 'inout_history_page.dart';
 
 
 class InOutPage extends StatefulWidget {
@@ -270,6 +271,7 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
               );
             },
           ),
+          // ignore: deprecated_member_use
           DView.spaceHeight(8),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -278,7 +280,9 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
                 DView.textTitle('History ${widget.type}', color: Colors.white),
                 const Spacer(),
                 DView.textAction(
-                  () {},
+                  () {
+                    Get.to(()=> InOutHistoryPage(type: widget.type));
+                  },
                   color: AppColor.primary,
                   iconRight: Icons.navigate_next,
                   iconRightColor: AppColor.primary,
