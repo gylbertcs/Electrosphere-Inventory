@@ -9,7 +9,7 @@ Link Figma : [LINK](https://www.figma.com/design/gPAEbwKWjsyXgeInVxLrRq/Pemob---
 
 - Keisya - 221402006<br>  <i>(Fullstack fitur login dan dashboard )</i>
 - Gylbert Chrismiguel Sitorus - 221402025
-<br> SetUp Awal <i>(Database, Model, Config)</i>
+<br> Setup Awal <i>(Database, Model, Config)</i>
 - Yohana Marito Marbun - 221402065
 <br> Back-End  <i>()</i>
 - Diva Anggreini Harahap - 221402094<br> <i>(Fullstack fitur History dan Kelola Stok IN)</i>
