@@ -34,7 +34,12 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
-        title:const Text('2022-05-18'),
+        title:Obx(
+           () {
+              if(cDetailHistory.data.idHistory==null) return const Text ('');
+            return Text(cDetailHistory.data.createdAt ?? "");
+          }
+        ),
         actions: [
          Obx(
            () {

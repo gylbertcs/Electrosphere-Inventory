@@ -10,7 +10,7 @@ class SourceProduct {
   static Future<int> count() async {
     String url = '${Api.product}/${Api.count}';
     String? responseBody = await AppRequest.gets(url);
-    Map result = jsonDecode(responseBody);
+    Map result = jsonDecode(responseBody!);
     return result['data'];
       return 0;
   }
@@ -18,7 +18,7 @@ class SourceProduct {
     static Future<List<Product>> gets() async {
     String url = '${Api.product}/${Api.gets}';
     String? responseBody = await AppRequest.gets(url);
-    Map result = jsonDecode(responseBody);
+    Map result = jsonDecode(responseBody!);
     if (result['success']) {
       List list = result['data'];
       return list.map((e)=> Product.fromJson(e)).toList();

@@ -3,6 +3,7 @@ import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
 import 'package:electrosphereinventory/data/model/history.dart';
 import 'package:electrosphereinventory/presentation/controller/c_in_out.dart';
+import 'package:electrosphereinventory/presentation/page/history/detail_history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -302,6 +303,9 @@ if (cInOut.listTotal.length > 6 && cInOut.listTotal[6] == 0 && cInOut.listTotal[
               itemBuilder: (context, index) {
                 History history = cInOut.list[index];
                 return ListTile(
+                   onTap:() {
+                        Get.to(()=>DetailHistoryPage (idhHistory: '${history.idHistory}',));
+                      },
                   leading: widget.type=='IN' 
                   ? const Icon(Icons.south_west, color: Colors.green)
                   : const Icon(Icons.north_east, color: Colors.red),

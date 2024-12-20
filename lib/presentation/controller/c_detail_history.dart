@@ -11,5 +11,7 @@ class CDetailHistory extends GetxController {
     update();
   }
 
+  void setData(String idhHistory) {}
+
 }
 

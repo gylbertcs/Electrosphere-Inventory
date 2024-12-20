@@ -11,7 +11,7 @@ class Session {
     User user = User();
     SharedPreferences pref = await SharedPreferences.getInstance();
     String? stringUser = pref.getString('user');
-    user = User.fromJson(jsonDecode(stringUser));
+    user = User.fromJson(jsonDecode(stringUser!));
       final cUser = Get.put(CUser());
     cUser.data = user;
     return user;
