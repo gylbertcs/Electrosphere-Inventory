@@ -11,6 +11,8 @@ import '../controller/c_user.dart';
 import 'package:electrosphereinventory/presentation/controller/c_dashboard.dart';
 import 'package:electrosphereinventory/presentation/page/product/product_page.dart';
 
+import 'employee/employee_page.dart';
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -231,7 +233,9 @@ logout() async {
     return GestureDetector(
       onTap: () {
         Get.to(()=> const InOutPage(type: 'OUT'))
-            ?.then ((value)=> cDashboard.setOut());
+            ?.then ((value)=> cDashboard.setOut();
+           
+            );
       },
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -273,30 +277,37 @@ logout() async {
     );
   }
 
-  Container menuEmployee(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Employee',
-            style: textTheme.titleLarge,
-          ),
-          Obx((){
-            return Text(
-              cDashboard.employee.toString(),
-              style: textTheme.headlineMedium!.copyWith(
-                color: Colors.white,
-              ),
+  Widget menuEmployee(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(()=> const EmployeePage())
+            ?.then ((value)=> cDashboard.setEmployee()   
             );
-          }),
-        ],
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Employee',
+              style: textTheme.titleLarge,
+            ),
+            Obx((){
+              return Text(
+                cDashboard.employee.toString(),
+                style: textTheme.headlineMedium!.copyWith(
+                  color: Colors.white,
+                ),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }
