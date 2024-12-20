@@ -98,9 +98,9 @@ TBA
 7. Buatlah database baru bernama electrosphere, lalu pilih menu import <br>
 8. Masukkan file .sql yang ada didalam folder project lalu klik "import"
 9. Jalankan Command Prompt (atau terminal sejenis) dan ketik `ipconfig` untuk melihat alamat IP perangkat
-10. Pastikan alamat IP ynag dicatat sesuai dengan perangkat dan dapat diakses dalam jaringan yang sama
+10. Pastikan alamat IP yang dicatat sesuai dengan perangkat dan dapat diakses dalam jaringan yang sama
 11. Buka file `api.dart` yang berada di folder `/lib/config`
-12. Ubah baris berikut untuk memperbarui URL Base API
+12. Ubah baris berikut untuk memperbarui URL Base API <br>
     ```dart
     static const_baseURL = 'http://<ip_perangkat>/api_electrosphereinventory';
     ```
