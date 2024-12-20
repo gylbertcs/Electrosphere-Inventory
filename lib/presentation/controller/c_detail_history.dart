@@ -6,7 +6,7 @@ import '../../data/source/source_history.dart';
 class CDetailHistory extends GetxController {
   final Rx<User> _data = User().obs;
   History get data => _data.value;
-  set data(String idHistory) async {
+  set data(String idHistory) {
     _data.value = await SourceHistory.getWhereId(idHistory);
     update();
   }

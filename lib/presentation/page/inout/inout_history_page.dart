@@ -1,6 +1,5 @@
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
-import 'package:electrosphereinventory/presentation/controller/c_history.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../../../data/source/source_user.dart';
 
 class AddEmployeePage extends StatefulWidget {
-  const AddEmployeePage({Key? key}) : super(key: key);
+  const AddEmployeePage({super.key});
 
   @override
   State<AddEmployeePage> createState() => _AddEmployeePageState();

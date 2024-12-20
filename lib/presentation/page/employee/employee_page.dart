@@ -9,7 +9,7 @@ import '../../controller/c_employee.dart';
 import 'add_employee.dart';
 
 class EmployeePage extends StatefulWidget {
-  const EmployeePage({Key? key}) : super(key: key);
+  const EmployeePage({super.key});
 
   @override
   State<EmployeePage> createState() => _EmployeePageState();

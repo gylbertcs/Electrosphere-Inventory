@@ -9,7 +9,7 @@ import 'package:electrosphereinventory/presentation/controller/c_add_inout.dart'
 
 
 class AddInOutPage extends StatefulWidget {
-  const AddInOutPage({Key? key, required this.type}) : super(key: key);
+  const AddInOutPage({super.key, required this.type});
   final String type;
 
   @override

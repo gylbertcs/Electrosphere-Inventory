@@ -13,7 +13,7 @@ import '../../controller/c_detail_history.dart';
 
 
 class DetailHistoryPage extends StatefulWidget {
-  const DetailHistoryPage({Key? key, required this.idhHistory}) : super(key: key);
+  const DetailHistoryPage({super.key, required this.idhHistory});
   final String idhHistory;
 
   @override

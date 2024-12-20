@@ -11,7 +11,7 @@ import 'dart:convert';
 
 
 class PickProductPage extends StatefulWidget {
-  const PickProductPage({Key? key, required this.type}) : super(key: key);
+  const PickProductPage({super.key, required this.type});
   final String type;
 
   @override
