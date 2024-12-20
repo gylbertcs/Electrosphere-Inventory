@@ -1,47 +1,61 @@
 # ElectroSphere-Inventory
 
 ## Info
-
+Link Figma : [LINK](https://www.figma.com/design/gPAEbwKWjsyXgeInVxLrRq/Pemob---Inventory?node-id=250-149&t=aTD7qhuXyFqz013D-1)
 <p>Nama Aplikasi: ElectroSphere-Inventory</p>
 <p>Tim Pengembang : Kelompok 3</p>
 
-- Keisya - 221402006<br> Back-End  <i>()</i>
+- Keisya - 221402006<br>  <i>(Fullstack fitur login dan dashboard )</i>
 - Gylbert Chrismiguel Sitorus - 221402025
-<br> Front-End, Documentation <i>()</i>
+<br>  <i>()</i>
 - Yohana Marito Marbun - 221402065
 <br> Back-End  <i>()</i>
-- Diva Anggreini Harahap - 221402094<br> Back-End  <i>()</i>
+- Diva Anggreini Harahap - 221402094<br> <i>(Fullstack fitur History dan Kelola Stok IN)</i>
 - Fenaya Cecilly Nababan - 221402100<br> Front-End  <i>()</i>
-- Sakifa Indira Putri - 221402130<br> Front-End  <i>()</i>
+- Sakifa Indira Putri - 221402130<br> <i>(Fullstack Kelola Produk)</i>
 
 ## Desc
-ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk mengelola inventarisasi barang-barang elektronik secara efisien. Aplikasi ini menawarkan kemudahan dalam mencatat, mengelompokkan, dan melacak stok barang elektronik seperti smartphone, laptop, televisi, hingga peralatan elektronik rumah tangga lainnya. Dengan antarmuka yang user-friendly, pengguna dapat dengan cepat memasukkan data barang, termasuk deskripsi, jumlah stok, serta informasi terkait harga dan pemasok. 
+ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk mengelola inventarisasi barang-barang elektronik secara efisien. Aplikasi ini menawarkan kemudahan dalam mengelola produk, melacak riwayat stok barang, hingga mengelola pegawai. Produk yang di kelola berupa produk elektronik seperti smartphone, laptop, televisi, hingga peralatan elektronik rumah tangga lainnya. Dengan antarmuka yang user-friendly, pengguna dapat lebih mudah dan efisien dalam melakukan pengelolaan stok produk elektronik.
+
 
 ## ⚙️ Features 
 
-### Pemilik Toko 🧑‍🦱
+### Admin 🧑‍🦱
 
+####  Login
+- Menggunakan email dan password
+  
 ####  Kelola Produk 🛠️
 - Menambahkan produk (dilengkapi fitur scan barcode)
 - Menghapus produk
-- Mengedit produk (detail produk, harga produk)
-- Muncul notifikasi jika stok hampir habis
+- Mengedit produk
 
-#### Kelola Stok 📦
-- Mengupdate stok manual
-- Melihat riwayat stok masuk dan keluar
-- Menentukan stok minimal produk
+#### Menu riwayat stok 📦
+- Melihat daftar riwayat stok IN dan OUT secara keseluruhan
+- Melakukan filter berdasarkan tanggal
+- Menghapus riwayat stok IN atau stok OUT
 
-#### Laporan 📊
-- Melihat laporan stok barang secara keseluruhan
-- Melihat laporan penjualan berdasarkan produk atau kategori
-- Ekspor laporan ke dalam format PDF atau Excel
-- Melihat laporan pegawai mengenai barang rusak atau retur
+#### Kelola Stok IN (stok masuk) 📊
+- Melihat daftar riwayat stok IN
+- Melihat visualisasi statistik dari riwayat stok IN
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok IN
+- Menghapus riwayat stok IN
+- Menambah data stok IN
 
-#### Log
-- Memantau aktivitas pegawai, seperti riwayat menambahkan produk
+#### Kelola Stok OUT (stok keluar) 📊
+- Melihat daftar riwayat stok OUT
+- Melihat visualisasi statistik dari riwayat stok OUT
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok OUT
+- Menghapus riwayat stok OUT
+- Menambah data stok OUT
 
-### Pegawai Toko (Sales)
+#### Kelola Pegawai
+- Menambah pegawai
+- Menghapus pegawai
+
+### Pegawai Toko
 
 ####  Kelola Produk 🛠️
 - Melihat produk
