@@ -28,12 +28,7 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 - Menghapus produk
 - Mengedit produk
 
-#### Kelola Stok 📦
-- Mengupdate stok manual
-- Melihat riwayat stok masuk dan keluar
-- Menentukan stok minimal produk
-
-#### Menu riwayat stok
+#### Menu riwayat stok 📦
 - Melihat daftar riwayat stok IN dan OUT secara keseluruhan
 - Melakukan filter berdasarkan tanggal
 - Menghapus riwayat stok IN atau stok OUT
@@ -46,7 +41,7 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 - Menghapus riwayat stok IN
 - Menambah data stok IN
 
-#### Kelola Stok OUT (stok keluar)
+#### Kelola Stok OUT (stok keluar) 📊
 - Melihat daftar riwayat stok OUT
 - Melihat visualisasi statistik dari riwayat stok OUT
 - Melakukan filter berdasarkan tanggal
