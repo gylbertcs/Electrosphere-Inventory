@@ -1,11 +1,11 @@
 # ElectroSphere-Inventory
 
 ## Info
-
+Link Figma : [LINK](https://www.figma.com/design/gPAEbwKWjsyXgeInVxLrRq/Pemob---Inventory?node-id=250-149&t=aTD7qhuXyFqz013D-1)
 <p>Nama Aplikasi: ElectroSphere-Inventory</p>
 <p>Tim Pengembang : Kelompok 3</p>
 
-- Keisya - 221402006<br> Fullstack fitur login dan dashboard  <i>()</i>
+- Keisya - 221402006<br>  <i>(Fullstack fitur login dan dashboard )</i>
 - Gylbert Chrismiguel Sitorus - 221402025
 <br> Front-End, Documentation <i>()</i>
 - Yohana Marito Marbun - 221402065
@@ -16,6 +16,8 @@
 
 ## Desc
 ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk mengelola inventarisasi barang-barang elektronik secara efisien. Aplikasi ini menawarkan kemudahan dalam mengelola produk, melacak riwayat stok barang, hingga mengelola pegawai. Produk yang di kelola berupa produk elektronik seperti smartphone, laptop, televisi, hingga peralatan elektronik rumah tangga lainnya. Dengan antarmuka yang user-friendly, pengguna dapat lebih mudah dan efisien dalam melakukan pengelolaan stok produk elektronik.
+
+
 ## ⚙️ Features 
 
 ### Admin 🧑‍🦱
