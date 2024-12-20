@@ -5,7 +5,7 @@
 <p>Nama Aplikasi: ElectroSphere-Inventory</p>
 <p>Tim Pengembang : Kelompok 3</p>
 
-- Keisya - 221402006<br> Back-End  <i>()</i>
+- Keisya - 221402006<br> Fullstack fitur login dan dashboard  <i>()</i>
 - Gylbert Chrismiguel Sitorus - 221402025
 <br> Front-End, Documentation <i>()</i>
 - Yohana Marito Marbun - 221402065
