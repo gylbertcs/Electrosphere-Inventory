@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 
 import '../../../data/model/history.dart';
 import '../../../data/source/source_history.dart';
+import '../../controller/c_user.dart';
 import 'detail_history_page.dart';
 //import '../../controller/c_history.dart';
 
@@ -21,6 +22,7 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   final cHistory = Get.put(CHistory());
+  final cuser =Get.put(CUser());
   final controllerSearch = TextEditingController();
 
   showInputDate() async {
@@ -108,7 +110,13 @@ class _HistoryPageState extends State<HistoryPage> {
 floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
-        onPressed: () => delete(),
+        onPressed: () {
+          if(cuser.data.level=='Admin' ){
+            showInputDate();
+          }else{
+             DInfo.toastError('You have no access');
+          }
+        },
         child: const Icon(Icons.delete),
         ),
 
