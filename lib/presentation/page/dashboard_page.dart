@@ -1,15 +1,20 @@
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:electrosphereinventory/config/session.dart';
+import 'package:electrosphereinventory/presentation/page/history/history_page.dart';
+import 'package:electrosphereinventory/presentation/page/inout/inout_page.dart';
 import 'package:electrosphereinventory/presentation/page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:electrosphereinventory/config/app_color.dart';
 import '../controller/c_user.dart';
 import 'package:electrosphereinventory/presentation/controller/c_dashboard.dart';
+import 'package:electrosphereinventory/presentation/page/product/product_page.dart';
+
+import 'employee/employee_page.dart';
 
 class DashboardPage extends StatefulWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+  const DashboardPage({super.key});
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
@@ -85,53 +90,64 @@ logout() async {
     );
   }
 
-  Container menuProduct(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Product',
-            style: textTheme.titleLarge,
-          ),
-          Row(
-            children: [
-              Obx(() {
-                return Text(
-                cDashboard.product.toString(),
-                style: textTheme.headlineMedium!.copyWith(
-                color: Colors.white,
+  Widget menuProduct(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(() => const ProductPage())
+        ?.then((value) => cDashboard.setProduct);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Product',
+              style: textTheme.titleLarge,
+            ),
+            Row(
+              children: [
+                Obx(() {
+                  return Text(
+                  cDashboard.product.toString(),
+                  style: textTheme.headlineMedium!.copyWith(
+                  color: Colors.white,
+                  ),
+                  );
+                }),
+                DView.width(8),
+                const Text(
+                  'Item',
+                  style: TextStyle(
+                    color: Colors.white54,
+                    fontSize: 18,
+                  ),
                 ),
-                );
-              }),
-              DView.width(8),
-              const Text(
-                'Item',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Container menuHistory(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
-      ),
+  Widget menuHistory(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: (){
+        Get.to(() => const HistoryPage())
+        ?.then((value) => cDashboard.setHistory());
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,11 +178,18 @@ logout() async {
           ),
         ],
       ),
+      ),
     );
+  
   }
 
-  Container menuIn(TextTheme textTheme) {
-    return Container(
+  Widget menuIn(TextTheme textTheme) {
+    return GestureDetector(
+    onTap: (){
+      Get.to(()=> const InOutPage(type: 'IN'))
+        ?.then((value) => cDashboard.setIn());
+    },
+    child:Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColor.input,
@@ -202,73 +225,89 @@ logout() async {
           ),
         ],
       ),
+    ),
     );
   }
 
-  Container menuOut(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
+  Widget menuOut(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(()=> const InOutPage(type: 'OUT'))
+            ?.then ((value)=> cDashboard.setOut()
+           
+            );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'OUT',
+              style: textTheme.titleLarge,
+            ),
+            Row(
+              children: [
+                Obx((){
+                  return Text(
+                  cDashboard.outs.toString(),
+                  style: textTheme.headlineMedium!.copyWith(
+                    color: Colors.white,
+                  ),
+                  );
+                }),
+                DView.width(8),
+                const Text(
+                  'Item',
+                  style: TextStyle(
+                    color: Colors.white54,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'OUT',
-            style: textTheme.titleLarge,
-          ),
-          Row(
-            children: [
-              Obx((){
-                return Text(
-                cDashboard.outs.toString(),
+    );
+  }
+
+  Widget menuEmployee(TextTheme textTheme) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(()=> const EmployeePage())
+            ?.then ((value)=> cDashboard.setEmployee()   
+            );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.input,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Employee',
+              style: textTheme.titleLarge,
+            ),
+            Obx((){
+              return Text(
+                cDashboard.employee.toString(),
                 style: textTheme.headlineMedium!.copyWith(
                   color: Colors.white,
                 ),
-                );
-              }),
-              DView.width(8),
-              const Text(
-                'Item',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container menuEmployee(TextTheme textTheme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.input,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Employee',
-            style: textTheme.titleLarge,
-          ),
-          Obx((){
-            return Text(
-              cDashboard.employee.toString(),
-              style: textTheme.headlineMedium!.copyWith(
-                color: Colors.white,
-              ),
-            );
-          }),
-        ],
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

@@ -41,6 +41,10 @@ dependencies:
   http: ^1.2.2
   d_method: ^0.2.0
   d_info: ^0.0.7
+  d_input: ^0.5.1
+  intl: ^0.20.1
+  d_chart: ^2.10.2
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:
