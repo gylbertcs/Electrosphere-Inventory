@@ -28,11 +28,11 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 - Menggunakan email dan password
   
 ####  Kelola Produk 🛠️
-- Menambahkan produk (dilengkapi fitur scan barcode)
+- Menambahkan produk
 - Menghapus produk
 - Mengedit produk
 
-#### Menu riwayat stok 📦
+#### Menu Riwayat stok 📦
 - Melihat daftar riwayat stok IN dan OUT secara keseluruhan
 - Melakukan filter berdasarkan tanggal
 - Menghapus riwayat stok IN atau stok OUT
@@ -60,16 +60,29 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 ### Pegawai Toko
 
 ####  Kelola Produk 🛠️
-- Melihat produk
 - Menambahkan produk
-- Melaporkan barang yang rusak atau retur
+- Menghapus produk
+- Mengedit produk
 
-### Kelola Stok 📦
-- Mengupdate stok manual
-- Melihat riwayat stok masuk dan keluar
+####  Menu Riwayat stok 📦
+- Melihat daftar riwayat stok IN dan OUT secara keseluruhan
+- Melakukan filter berdasarkan tanggal
 
-## Permissions
-- Kamera
+#### Kelola Stok IN (stok masuk) 📊
+- Melihat daftar riwayat stok IN
+- Melihat visualisasi statistik dari riwayat stok IN
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok IN
+- Menghapus riwayat stok IN
+- Menambah data stok IN
+
+#### Kelola Stok OUT (stok keluar) 📊
+- Melihat daftar riwayat stok OUT
+- Melihat visualisasi statistik dari riwayat stok OUT
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok OUT
+- Menghapus riwayat stok OUT
+- Menambah data stok OUT
 
 ## Library
 TBA
