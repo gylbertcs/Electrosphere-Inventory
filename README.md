@@ -9,7 +9,7 @@ Link Figma : [LINK](https://www.figma.com/design/gPAEbwKWjsyXgeInVxLrRq/Pemob---
 
 - Keisya - 221402006<br>  <i>(Fullstack fitur login dan dashboard, figma design, finishing)</i>
 - Gylbert Chrismiguel Sitorus - 221402025
-<br> Setup Awal <i>(Database, Model, Config)</i>, figma design, PPT
+<br> <i>(Setup Awal (Database, Model, Config), Figma design dan PPT)</i>
 - Yohana Marito Marbun - 221402065
 <br> <i>(Fullstack fitur kelola stock out, additional history, finishing)</i>
 - Diva Anggreini Harahap - 221402094<br> <i>(Fullstack fitur History dan Kelola Stok IN, figma design, PPT)</i>
@@ -73,7 +73,6 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 - Melihat visualisasi statistik dari riwayat stok IN
 - Melakukan filter berdasarkan tanggal
 - Melihat detail dari suatu riwayat stok IN
-- Menghapus riwayat stok IN
 - Menambah data stok IN
 
 #### Kelola Stok OUT (stok keluar) 📊
@@ -81,7 +80,6 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 - Melihat visualisasi statistik dari riwayat stok OUT
 - Melakukan filter berdasarkan tanggal
 - Melihat detail dari suatu riwayat stok OUT
-- Menghapus riwayat stok OUT
 - Menambah data stok OUT
 
 ## Library
