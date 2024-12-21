@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                         MediaQuery.of(context).size.height * 0.15,
                       ),
                       Text(
-                        'Inventory\nCourse',
+                        'Electrosphere\nInventory',
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   color: Colors.white,
