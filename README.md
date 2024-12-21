@@ -7,14 +7,14 @@ Link Figma : [LINK](https://www.figma.com/design/gPAEbwKWjsyXgeInVxLrRq/Pemob---
 <p>Nama Aplikasi: ElectroSphere-Inventory</p>
 <p>Tim Pengembang : Kelompok 3</p>
 
-- Keisya - 221402006<br>  <i>(Fullstack fitur login dan dashboard )</i>
+- Keisya - 221402006<br>  <i>(Fullstack fitur login dan dashboard, figma design, finishing)</i>
 - Gylbert Chrismiguel Sitorus - 221402025
-<br> Setup Awal <i>(Database, Model, Config)</i>
+<br> <i>(Setup Awal (Database, Model, Config), Figma design dan PPT)</i>
 - Yohana Marito Marbun - 221402065
-<br> Back-End  <i>()</i>
-- Diva Anggreini Harahap - 221402094<br> <i>(Fullstack fitur History dan Kelola Stok IN)</i>
-- Fenaya Cecilly Nababan - 221402100<br> Front-End  <i>()</i>
-- Sakifa Indira Putri - 221402130<br> <i>(Fullstack Kelola Produk)</i>
+<br> <i>(Fullstack fitur kelola stock out, additional history, finishing)</i>
+- Diva Anggreini Harahap - 221402094<br> <i>(Fullstack fitur History dan Kelola Stok IN, figma design, PPT)</i>
+- Fenaya Cecilly Nababan - 221402100<br> <i>(Fullstack employee, finishing)</i>
+- Sakifa Indira Putri - 221402130<br> <i>(Fullstack Kelola Produk, figma design, PPT)</i>
 
 ## Desc
 ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk mengelola inventarisasi barang-barang elektronik secara efisien. Aplikasi ini menawarkan kemudahan dalam mengelola produk, melacak riwayat stok barang, hingga mengelola pegawai. Produk yang di kelola berupa produk elektronik seperti smartphone, laptop, televisi, hingga peralatan elektronik rumah tangga lainnya. Dengan antarmuka yang user-friendly, pengguna dapat lebih mudah dan efisien dalam melakukan pengelolaan stok produk elektronik.
@@ -28,11 +28,11 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 - Menggunakan email dan password
   
 ####  Kelola Produk 🛠️
-- Menambahkan produk (dilengkapi fitur scan barcode)
+- Menambahkan produk
 - Menghapus produk
 - Mengedit produk
 
-#### Menu riwayat stok 📦
+#### Menu Riwayat stok 📦
 - Melihat daftar riwayat stok IN dan OUT secara keseluruhan
 - Melakukan filter berdasarkan tanggal
 - Menghapus riwayat stok IN atau stok OUT
@@ -60,16 +60,27 @@ ELectroSphere Inventory adalah aplikasi mobile yang dirancang khusus untuk menge
 ### Pegawai Toko
 
 ####  Kelola Produk 🛠️
-- Melihat produk
 - Menambahkan produk
-- Melaporkan barang yang rusak atau retur
+- Menghapus produk
+- Mengedit produk
 
-### Kelola Stok 📦
-- Mengupdate stok manual
-- Melihat riwayat stok masuk dan keluar
+####  Menu Riwayat stok 📦
+- Melihat daftar riwayat stok IN dan OUT secara keseluruhan
+- Melakukan filter berdasarkan tanggal
 
-## Permissions
-- Kamera
+#### Kelola Stok IN (stok masuk) 📊
+- Melihat daftar riwayat stok IN
+- Melihat visualisasi statistik dari riwayat stok IN
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok IN
+- Menambah data stok IN
+
+#### Kelola Stok OUT (stok keluar) 📊
+- Melihat daftar riwayat stok OUT
+- Melihat visualisasi statistik dari riwayat stok OUT
+- Melakukan filter berdasarkan tanggal
+- Melihat detail dari suatu riwayat stok OUT
+- Menambah data stok OUT
 
 ## Library
 TBA
@@ -95,7 +106,7 @@ TBA
    <li>Pindahkan file api_electrosphereinventory ke folder xampp/htdocs, lalu ekstrak pada direktori tersebut</li>
 5. Membuka aplikasi XAMPP lalu aktifkan Apache dan Mysql <br>
 6. Ketik `localhost/phpmyadmin/` di browser <br>
-7. Buatlah database baru bernama electrosphere, lalu pilih menu import <br>
+7. Buatlah database baru bernama `db_inventory`, lalu pilih menu import <br>
 8. Masukkan file .sql yang ada didalam folder project lalu klik "import"
 9. Jalankan Command Prompt (atau terminal sejenis) dan ketik `ipconfig` untuk melihat alamat IP perangkat
 10. Pastikan alamat IP yang dicatat sesuai dengan perangkat dan dapat diakses dalam jaringan yang sama
